@@ -4,3 +4,15 @@ export interface RegionData {
   amount: number;
   region: string;
 }
+
+export interface MatchData {
+  id: number;
+  surplusRegion: string;
+  surplusContinent: string;
+  shortageRegion: string;
+  shortageContinent: string;
+  commodity: string;
+  tonnage: number;
+  shippingCost: number;
+  feasibility: number;
+}
