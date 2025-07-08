@@ -5,7 +5,7 @@ import { topMatchesData } from "@/data/mock-data";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, DollarSign } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const INITIAL_VISIBLE_COUNT = 15;
 
@@ -24,6 +24,13 @@ export default function MatchMaker() {
       maximumFractionDigits: 0,
     }).format(amount);
   };
+
+  const formatNumber = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  }
 
   return (
     <Card>
@@ -51,9 +58,8 @@ export default function MatchMaker() {
                  </div>
               </div>
               <div className="flex items-center gap-4 w-full sm:w-auto self-stretch sm:self-center">
-                 <div className="flex items-center gap-2 text-primary flex-shrink-0">
-                    <DollarSign className="h-5 w-5" />
-                    <span className="font-bold text-lg">{formatCurrency(match.shippingCost)}</span>
+                 <div className="text-lg font-bold text-primary flex-shrink-0">
+                    {formatCurrency(match.donatedAmount)} / {formatNumber(match.shippingCost)}
                  </div>
                 <Button className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90">
                   Donate

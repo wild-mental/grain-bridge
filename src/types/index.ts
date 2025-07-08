@@ -14,5 +14,6 @@ export interface MatchData {
   commodity: string;
   tonnage: number;
   shippingCost: number;
+  donatedAmount: number;
   feasibility: number;
 }
