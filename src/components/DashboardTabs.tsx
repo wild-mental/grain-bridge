@@ -17,7 +17,7 @@ export default function DashboardTabs() {
       <div className="text-center mb-8">
         <h2 className="font-headline text-3xl md:text-4xl font-bold">Global Dashboard</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Explore real-time data on global grain surpluses and shortages. Use our Smart Match tool to find opportunities for aid.
+          Explore real-time data on global grain surpluses and shortages. Use our Match & Donate tool to find opportunities for aid.
         </p>
       </div>
       <Tabs defaultValue="surplus" className="w-full">
@@ -32,7 +32,7 @@ export default function DashboardTabs() {
             <BarChartBig className="mr-2 h-4 w-4" /> Global View
           </TabsTrigger>
           <TabsTrigger value="match" className="py-2.5">
-            <Wand2 className="mr-2 h-4 w-4" /> Smart Match
+            <Wand2 className="mr-2 h-4 w-4" /> Match & Donate
           </TabsTrigger>
         </TabsList>
         <TabsContent value="surplus" className="mt-6">
