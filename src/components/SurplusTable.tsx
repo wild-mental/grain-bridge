@@ -30,7 +30,7 @@ export default function SurplusTable() {
                 <div className="font-medium">{item.region}</div>
                 <div className="text-sm text-muted-foreground">{item.event}</div>
               </TableCell>
-              <TableCell className="text-right font-medium text-green-500">
+              <TableCell className="text-right font-medium text-chart-1">
                 +{item.amount.toLocaleString()}
               </TableCell>
             </TableRow>

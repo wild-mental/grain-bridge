@@ -30,7 +30,7 @@ export default function ShortageTable() {
                 <div className="font-medium">{item.region}</div>
                 <div className="text-sm text-muted-foreground">{item.event}</div>
               </TableCell>
-              <TableCell className="text-right font-medium text-red-500">
+              <TableCell className="text-right font-medium text-destructive">
                 {item.amount.toLocaleString()}
               </TableCell>
             </TableRow>

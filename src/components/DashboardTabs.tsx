@@ -8,7 +8,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import SurplusTable from "./SurplusTable";
 import ShortageTable from "./ShortageTable";
 import MatchMaker from "./MatchMaker";
-import { Globe, ArrowUpRight, ArrowDownRight, Wand2 } from "lucide-react";
+import { ArrowUpRight, ArrowDownRight, Wand2, BarChartBig } from "lucide-react";
+import SurplusShortageChart from "./SurplusShortageChart";
 
 export default function DashboardTabs() {
   return (
@@ -20,12 +21,15 @@ export default function DashboardTabs() {
         </p>
       </div>
       <Tabs defaultValue="surplus" className="w-full">
-        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 h-auto sm:h-12">
+        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-4 h-auto sm:h-12">
           <TabsTrigger value="surplus" className="py-2.5">
             <ArrowUpRight className="mr-2 h-4 w-4" /> Surplus Zones
           </TabsTrigger>
           <TabsTrigger value="shortage" className="py-2.5">
             <ArrowDownRight className="mr-2 h-4 w-4" /> Shortage Zones
+          </TabsTrigger>
+          <TabsTrigger value="visualization" className="py-2.5">
+            <BarChartBig className="mr-2 h-4 w-4" /> Global View
           </TabsTrigger>
           <TabsTrigger value="match" className="py-2.5">
             <Wand2 className="mr-2 h-4 w-4" /> Smart Match
@@ -52,6 +56,9 @@ export default function DashboardTabs() {
               <ShortageTable />
             </CardContent>
           </Card>
+        </TabsContent>
+        <TabsContent value="visualization" className="mt-6">
+          <SurplusShortageChart />
         </TabsContent>
         <TabsContent value="match" className="mt-6">
           <MatchMaker />
