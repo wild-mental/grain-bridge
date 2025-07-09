@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
@@ -42,7 +43,7 @@ export default function ImpactBoard() {
                 {impactData.livesImpacted.toLocaleString()}
               </div>
               <p className="text-sm text-muted-foreground mt-1">
-                Estimated reach based on caloric needs
+                Estimated reach based on caloric needs (predicted)
               </p>
             </CardContent>
           </Card>
@@ -56,7 +57,7 @@ export default function ImpactBoard() {
                 {(impactData.tonnesMoved / 1000000).toFixed(2)}M
               </div>
               <p className="text-xs text-muted-foreground">
-                Total grain tonnes shipped to date
+                Total grain tonnes shipped to date (predicted)
               </p>
             </CardContent>
           </Card>
@@ -70,7 +71,7 @@ export default function ImpactBoard() {
                 {(impactData.kcalDelivered / 1e12).toFixed(2)} Trillion
               </div>
               <p className="text-xs text-muted-foreground">
-                Providing essential energy to communities
+                Providing essential energy to communities (predicted)
               </p>
             </CardContent>
           </Card>
@@ -102,8 +103,8 @@ export default function ImpactBoard() {
                     {chartData.map((entry, index) => (
                       <Cell 
                         key={`cell-${index}`}
-                        fill={entry.year === '2025' ? 'hsla(var(--primary), 0.6)' : 'hsl(var(--primary))'}
-                        stroke={entry.year === '2025' ? 'hsl(var(--primary))' : 'none'}
+                        fill={entry.year === '2025' ? 'hsla(var(--accent), 0.6)' : 'hsl(var(--accent))'}
+                        stroke={entry.year === '2025' ? 'hsl(var(--accent))' : 'none'}
                         strokeDasharray={entry.year === '2025' ? "4 4" : "0"}
                         strokeWidth={entry.year === '2025' ? 1.5 : 0}
                       />
