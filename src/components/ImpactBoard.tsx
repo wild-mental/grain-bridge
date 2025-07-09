@@ -103,8 +103,8 @@ export default function ImpactBoard() {
                     {chartData.map((entry, index) => (
                       <Cell 
                         key={`cell-${index}`}
-                        fill={entry.year === '2025' ? 'hsla(var(--accent), 0.6)' : 'hsl(var(--accent))'}
-                        stroke={entry.year === '2025' ? 'hsl(var(--accent))' : 'none'}
+                        fill={entry.year === '2025' ? 'hsla(120, 60%, 70%, 0.7)' : 'hsl(120, 60%, 70%)'}
+                        stroke={entry.year === '2025' ? '#000000' : 'none'}
                         strokeDasharray={entry.year === '2025' ? "4 4" : "0"}
                         strokeWidth={entry.year === '2025' ? 1.5 : 0}
                       />
