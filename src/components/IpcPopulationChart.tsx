@@ -18,6 +18,12 @@ export default function IpcPopulationChart({ data }: IpcPopulationChartProps) {
           data={data}
           margin={{ top: 5, right: 20, left: -10, bottom: 5 }}
         >
+          <defs>
+            <linearGradient id="populationGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="hsl(var(--destructive))" stopOpacity={0.9}/>
+              <stop offset="95%" stopColor="#fecaca" stopOpacity={0.8}/>
+            </linearGradient>
+          </defs>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border) / 0.5)" />
           <XAxis 
             dataKey="year" 
@@ -45,7 +51,7 @@ export default function IpcPopulationChart({ data }: IpcPopulationChartProps) {
             formatter={(value: number) => [`${value} million`, 'IPC 3+ Population']}
           />
           <Legend wrapperStyle={{ fontSize: '14px', paddingTop: '20px' }}/>
-          <Bar dataKey="population" name="IPC 3+ Population (millions)" fill="hsl(var(--destructive))" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="population" name="IPC 3+ Population (millions)" fill="url(#populationGradient)" radius={[4, 4, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>
