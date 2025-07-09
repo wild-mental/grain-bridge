@@ -11,10 +11,10 @@ const impactData = {
 };
 
 const chartData = [
-  { year: '2021', mitigated: 4, },
-  { year: '2022', mitigated: 12, },
-  { year: '2023', mitigated: 25, },
-  { year: '2024', mitigated: 42, },
+  { year: '2021', target: 10 },
+  { year: '2022', target: 20 },
+  { year: '2023', target: 40 },
+  { year: '2024', target: 60 },
   { year: '2025', mitigated: 58, target: 100 },
 ];
 
