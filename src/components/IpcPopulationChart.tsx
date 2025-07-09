@@ -1,0 +1,53 @@
+"use client"
+
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+
+interface IpcPopulationChartProps {
+  data: {
+    year: number;
+    population: number;
+    gap: number;
+  }[];
+}
+
+export default function IpcPopulationChart({ data }: IpcPopulationChartProps) {
+  return (
+    <div className="h-[300px] w-full mb-8">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart 
+          data={data}
+          margin={{ top: 5, right: 20, left: -10, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border) / 0.5)" />
+          <XAxis 
+            dataKey="year" 
+            stroke="hsl(var(--muted-foreground))" 
+            fontSize={12} 
+            tickLine={false}
+            axisLine={false}
+          />
+          <YAxis 
+            stroke="hsl(var(--muted-foreground))" 
+            fontSize={12} 
+            tickLine={false}
+            axisLine={false}
+            tickFormatter={(value) => `${value}M`} 
+            domain={[0, (dataMax: number) => Math.ceil(dataMax / 50) * 50]}
+          />
+          <Tooltip
+            cursor={{ fill: 'hsl(var(--muted) / 0.3)' }}
+            contentStyle={{
+              background: "hsl(var(--background))",
+              border: "1px solid hsl(var(--border))",
+              borderRadius: "var(--radius)",
+            }}
+            labelStyle={{ color: "hsl(var(--foreground))" }}
+            formatter={(value: number) => [`${value} million`, 'IPC 3+ Population']}
+          />
+          <Legend wrapperStyle={{ fontSize: '14px', paddingTop: '20px' }}/>
+          <Bar dataKey="population" name="IPC 3+ Population (millions)" fill="hsl(var(--destructive))" radius={[4, 4, 0, 0]} />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}

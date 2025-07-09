@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DashboardTabs from '@/components/DashboardTabs';
 import ImpactBoard from '@/components/ImpactBoard';
+import IpcPopulationChart from '@/components/IpcPopulationChart';
 import {
   Accordion,
   AccordionContent,
@@ -55,10 +56,12 @@ export default function Home() {
             <CardHeader>
               <CardTitle>The Widening Gap: IPC 3+ Population &amp; Grain Needs</CardTitle>
               <CardDescription>
-                This table shows the alarming increase in populations facing food crises and the corresponding grain equivalent needed to meet their minimum caloric needs.
+                This chart and table show the alarming increase in populations facing food crises and the corresponding grain equivalent needed to meet their minimum caloric needs.
               </CardDescription>
             </CardHeader>
             <CardContent>
+              <IpcPopulationChart data={ipcData} />
+
               <div className="rounded-lg border">
                 <Table>
                   <TableHeader>
