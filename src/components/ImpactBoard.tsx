@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Cell } from 'recharts';
 import { HelpingHand, Scale, Wheat } from "lucide-react";
 
 const impactData = {
@@ -11,11 +11,11 @@ const impactData = {
 };
 
 const chartData = [
-  { year: '2021', target: 10 },
-  { year: '2022', target: 20 },
-  { year: '2023', target: 40 },
-  { year: '2024', target: 60 },
-  { year: '2025', mitigated: 58, target: 100 },
+  { year: '2021', target: 12.1 },
+  { year: '2022', target: 16.1 },
+  { year: '2023', target: 17.6 },
+  { year: '2024', target: 18.5 },
+  { year: '2025', mitigated: 5.3, target: 19.5 }, // 2025 is predictive
 ];
 
 export default function ImpactBoard() {
@@ -78,8 +78,8 @@ export default function ImpactBoard() {
         
         <Card>
           <CardHeader>
-            <CardTitle>IPC 3+ Caloric Gap Mitigated</CardTitle>
-            <CardDescription>Percentage of critical food need met by year.</CardDescription>
+            <CardTitle>IPC 3+ Required vs. Delivered Grain (Million Tonnes)</CardTitle>
+            <CardDescription>This chart shows the required grain (in million tonnes) to meet minimum caloric needs versus the actual and projected amounts delivered. The 2025 projection is indicated with a dashed outline.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="h-[350px] w-full">
@@ -87,7 +87,7 @@ export default function ImpactBoard() {
                 <BarChart data={chartData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border) / 0.5)" />
                   <XAxis dataKey="year" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickFormatter={(value) => `${value}%`} />
+                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickFormatter={(value) => `${value} Mt`} />
                   <Tooltip
                     contentStyle={{
                       background: "hsl(var(--background))",
@@ -95,10 +95,21 @@ export default function ImpactBoard() {
                       borderRadius: "var(--radius)",
                     }}
                     labelStyle={{ color: "hsl(var(--foreground))" }}
+                    formatter={(value: number, name: string) => [`${value.toLocaleString()} Mt`, name]}
                   />
                   <Legend wrapperStyle={{ fontSize: '14px' }}/>
-                  <Bar dataKey="mitigated" fill="hsl(var(--primary))" name="Mitigated Gap" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="target" fill="hsl(var(--primary) / 0.2)" name="Target" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="mitigated" name="Delivered (Predicted)" radius={[4, 4, 0, 0]}>
+                    {chartData.map((entry, index) => (
+                      <Cell 
+                        key={`cell-${index}`}
+                        fill={entry.year === '2025' ? 'hsla(var(--primary), 0.6)' : 'hsl(var(--primary))'}
+                        stroke={entry.year === '2025' ? 'hsl(var(--primary))' : 'none'}
+                        strokeDasharray={entry.year === '2025' ? "4 4" : "0"}
+                        strokeWidth={entry.year === '2025' ? 1.5 : 0}
+                      />
+                    ))}
+                  </Bar>
+                  <Bar dataKey="target" fill="hsl(var(--primary) / 0.2)" name="Required Gap" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
