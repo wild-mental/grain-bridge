@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -6,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
+import { DonationDialog } from "./DonationDialog";
 
 const INITIAL_VISIBLE_COUNT = 15;
 
@@ -61,9 +63,11 @@ export default function MatchMaker() {
                  <div className="text-lg font-bold text-primary flex-shrink-0">
                     {formatCurrency(match.donatedAmount)} / {formatNumber(match.shippingCost)}
                  </div>
-                <Button className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90">
-                  Donate
-                </Button>
+                 <DonationDialog>
+                    <Button className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90">
+                      Donate
+                    </Button>
+                </DonationDialog>
               </div>
             </div>
           ))}

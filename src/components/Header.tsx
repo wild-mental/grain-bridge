@@ -1,6 +1,8 @@
+
 import Link from "next/link";
 import GrainBridgeLogo from "@/components/Logo";
 import { Button } from "@/components/ui/button";
+import { DonationDialog } from "./DonationDialog";
 
 export default function Header() {
   return (
@@ -21,9 +23,11 @@ export default function Header() {
           </Link>
         </nav>
         <div className="flex items-center justify-end">
-          <Button>
-            Donate Now
-          </Button>
+          <DonationDialog>
+            <Button>
+              Donate Now
+            </Button>
+          </DonationDialog>
         </div>
       </div>
     </header>
