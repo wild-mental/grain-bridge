@@ -5,9 +5,9 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { HelpingHand, Scale, Wheat } from "lucide-react";
 
 const impactData = {
-  tonnesMoved: 125800,
-  kcalDelivered: 437e9,
-  livesImpacted: 875000,
+  tonnesMoved: 5300000,
+  kcalDelivered: 18.5e12,
+  livesImpacted: 24000000,
 };
 
 const chartData = [
@@ -29,7 +29,23 @@ export default function ImpactBoard() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <Card className="md:col-span-2 flex flex-col items-center justify-center p-6 text-center">
+            <CardHeader className="p-2">
+              <CardTitle className="text-base font-medium flex items-center gap-2">
+                <HelpingHand className="h-5 w-5 text-muted-foreground" />
+                People Supported
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <div className="text-5xl font-bold text-primary">
+                {impactData.livesImpacted.toLocaleString()}
+              </div>
+              <p className="text-sm text-muted-foreground mt-1">
+                Estimated reach based on caloric needs
+              </p>
+            </CardContent>
+          </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Tonnes Delivered</CardTitle>
@@ -37,10 +53,10 @@ export default function ImpactBoard() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {impactData.tonnesMoved.toLocaleString()} Mt
+                {(impactData.tonnesMoved / 1000000).toFixed(2)}M
               </div>
               <p className="text-xs text-muted-foreground">
-                Total grain shipped to date
+                Total grain tonnes shipped to date
               </p>
             </CardContent>
           </Card>
@@ -51,24 +67,10 @@ export default function ImpactBoard() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {Math.round(impactData.kcalDelivered / 1e9)} Billion
+                {(impactData.kcalDelivered / 1e12).toFixed(2)} Trillion
               </div>
               <p className="text-xs text-muted-foreground">
                 Providing essential energy to communities
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">People Supported</CardTitle>
-              <HelpingHand className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">
-                {impactData.livesImpacted.toLocaleString()}
-              </div>
-              <p className="text-xs text-muted-foreground">
-                Estimated reach based on caloric needs
               </p>
             </CardContent>
           </Card>
