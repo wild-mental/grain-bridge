@@ -1,6 +1,6 @@
 "use client"
 
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Cell } from 'recharts';
 
 interface IpcPopulationChartProps {
   data: {
@@ -11,6 +11,21 @@ interface IpcPopulationChartProps {
 }
 
 export default function IpcPopulationChart({ data }: IpcPopulationChartProps) {
+  const populationValues = data.map(d => d.population);
+  const minPopulation = Math.min(...populationValues);
+  const maxPopulation = Math.max(...populationValues);
+
+  const getColor = (population: number) => {
+    // Avoid division by zero if all values are the same
+    if (maxPopulation === minPopulation) {
+      return 'hsl(0, 90%, 60%)'; // Return a default color
+    }
+    const percentage = (population - minPopulation) / (maxPopulation - minPopulation);
+    // Interpolating lightness from a pinkish red (lightness ~75) to a deep red (lightness ~50)
+    const lightness = 75 - percentage * 25;
+    return `hsl(0, 90%, ${lightness}%)`;
+  };
+
   return (
     <div className="h-[300px] w-full mb-8">
       <ResponsiveContainer width="100%" height="100%">
@@ -18,12 +33,6 @@ export default function IpcPopulationChart({ data }: IpcPopulationChartProps) {
           data={data}
           margin={{ top: 5, right: 20, left: -10, bottom: 5 }}
         >
-          <defs>
-            <linearGradient id="populationGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="hsl(var(--destructive))" stopOpacity={0.9}/>
-              <stop offset="95%" stopColor="#fecaca" stopOpacity={0.8}/>
-            </linearGradient>
-          </defs>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border) / 0.5)" />
           <XAxis 
             dataKey="year" 
@@ -51,7 +60,11 @@ export default function IpcPopulationChart({ data }: IpcPopulationChartProps) {
             formatter={(value: number) => [`${value} million`, 'IPC 3+ Population']}
           />
           <Legend wrapperStyle={{ fontSize: '14px', paddingTop: '20px' }}/>
-          <Bar dataKey="population" name="IPC 3+ Population (millions)" fill="url(#populationGradient)" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="population" name="IPC 3+ Population (millions)" radius={[4, 4, 0, 0]}>
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={getColor(entry.population)} />
+            ))}
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
     </div>
