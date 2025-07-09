@@ -18,6 +18,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import MatchMaker from '@/components/MatchMaker';
+import { Wand2 } from 'lucide-react';
 
 const ipcData = [
   { year: 2019, population: 135, gap: 8.4 },
@@ -107,6 +109,19 @@ export default function Home() {
         </section>
 
         <DashboardTabs />
+
+        <section id="match-and-donate" className="mb-12 md:mb-20">
+          <div className="text-center mb-8">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold flex items-center justify-center gap-3">
+              <Wand2 className="h-8 w-8 text-primary" />
+              Match &amp; Donate
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
+              Fund a pre-calculated, high-impact shipment to bridge a critical gap. Your donation directly covers shipping and logistics.
+            </p>
+          </div>
+          <MatchMaker />
+        </section>
         
         <ImpactBoard />
 

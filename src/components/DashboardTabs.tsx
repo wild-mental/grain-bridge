@@ -7,8 +7,7 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import SurplusTable from "./SurplusTable";
 import ShortageTable from "./ShortageTable";
-import MatchMaker from "./MatchMaker";
-import { ArrowUpRight, ArrowDownRight, Wand2, BarChartBig } from "lucide-react";
+import { ArrowUpRight, ArrowDownRight, BarChartBig } from "lucide-react";
 import SurplusShortageChart from "./SurplusShortageChart";
 
 export default function DashboardTabs() {
@@ -17,11 +16,11 @@ export default function DashboardTabs() {
       <div className="text-center mb-8">
         <h2 className="font-headline text-3xl md:text-4xl font-bold">Global Dashboard</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Explore real-time data on global grain surpluses and shortages. Use our Match & Donate tool to find opportunities for aid.
+          Explore real-time data on global grain surpluses and shortages.
         </p>
       </div>
       <Tabs defaultValue="surplus" className="w-full">
-        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-4 h-auto sm:h-12">
+        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 h-auto sm:h-12">
           <TabsTrigger value="surplus" className="py-2.5">
             <ArrowUpRight className="mr-2 h-4 w-4" /> Surplus Zones
           </TabsTrigger>
@@ -30,9 +29,6 @@ export default function DashboardTabs() {
           </TabsTrigger>
           <TabsTrigger value="visualization" className="py-2.5">
             <BarChartBig className="mr-2 h-4 w-4" /> Global View
-          </TabsTrigger>
-          <TabsTrigger value="match" className="py-2.5">
-            <Wand2 className="mr-2 h-4 w-4" /> Match & Donate
           </TabsTrigger>
         </TabsList>
         <TabsContent value="surplus" className="mt-6">
@@ -59,9 +55,6 @@ export default function DashboardTabs() {
         </TabsContent>
         <TabsContent value="visualization" className="mt-6">
           <SurplusShortageChart />
-        </TabsContent>
-        <TabsContent value="match" className="mt-6">
-          <MatchMaker />
         </TabsContent>
       </Tabs>
     </section>
