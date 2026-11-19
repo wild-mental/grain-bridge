@@ -13,7 +13,7 @@ import ImpactBoard from '@/components/ImpactBoard';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
 import { useLanguage } from '@/i18n/LanguageProvider';
-import kwinanaTerminal from '../../public/images/kwinana-grain-terminal.webp';
+import grainTerminalShip from '../../public/images/grain-terminal-ship-destrehan.webp';
 
 /**
  * Section rhythm (full-bleed backgrounds, content in a container):
@@ -35,7 +35,7 @@ export default function Home() {
         <section id="match-and-donate" aria-labelledby="match-title" className="relative isolate scroll-mt-24 bg-background pb-16 md:pb-24">
           <div className="absolute inset-x-0 top-0 -z-10 h-[380px] overflow-hidden md:h-[440px]">
             <Image
-              src={kwinanaTerminal}
+              src={grainTerminalShip}
               alt={t.match.bandAlt}
               fill
               placeholder="blur"

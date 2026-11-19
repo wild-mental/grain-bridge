@@ -13,7 +13,7 @@ import type { MatchData } from "@/types";
 
 const INITIAL_VISIBLE_COUNT = 15;
 
-/** Deterministic sample logistics meta for the demo (not real carriers or schedules). */
+/** Deterministic sample logistics meta (not real carriers or schedules). */
 function sampleLogistics(match: MatchData) {
   return {
     carrierNo: String(((match.id * 7) % 12) + 1).padStart(2, "0"),

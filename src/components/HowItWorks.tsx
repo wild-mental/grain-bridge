@@ -6,19 +6,19 @@ import { useLanguage } from "@/i18n/LanguageProvider";
 import { cn } from "@/lib/utils";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
-import wheatHarvest from "../../public/images/wheat-harvest-indiana.webp";
+import cornPile from "../../public/images/corn-pile-elevator-plymouth.webp";
 import matchingDesk from "../../public/images/ai-matching-planning-table.webp";
-import grainShipLoading from "../../public/images/grain-ship-loading-duluth.webp";
-import portSudan from "../../public/images/port-sudan-food-aid-unloading.webp";
-import petonville from "../../public/images/petonville-food-distribution.webp";
+import hopperCars from "../../public/images/grain-hopper-cars-westwego.webp";
+import reliefUnloading from "../../public/images/relief-sacks-unloading-palanan.webp";
+import grainInspection from "../../public/images/grain-inspection-corn-kernels.webp";
 
-/** Same order as `t.how.steps`. `ai` marks an AI-generated illustration (labelled on the card). */
-const stepVisuals: { image: StaticImageData; icon: LucideIcon; ai?: boolean }[] = [
-  { image: wheatHarvest, icon: Wheat },
-  { image: matchingDesk, icon: Route, ai: true },
-  { image: grainShipLoading, icon: HandCoins },
-  { image: portSudan, icon: Truck },
-  { image: petonville, icon: ClipboardCheck },
+/** Same order as `t.how.steps`. `position` is an optional object-position class for the crop. */
+const stepVisuals: { image: StaticImageData; icon: LucideIcon; position?: string }[] = [
+  { image: cornPile, icon: Wheat, position: "object-[15%_center]" },
+  { image: matchingDesk, icon: Route },
+  { image: hopperCars, icon: HandCoins },
+  { image: reliefUnloading, icon: Truck },
+  { image: grainInspection, icon: ClipboardCheck },
 ];
 
 /**
@@ -66,7 +66,10 @@ export default function HowItWorks() {
                           fill
                           placeholder="blur"
                           sizes="(min-width: 768px) 50vw, 80vw"
-                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                          className={cn(
+                            "object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100",
+                            visual.position,
+                          )}
                         />
                       </div>
                       {/* Bottom gradient keeps the white text readable on any photo */}
@@ -83,11 +86,6 @@ export default function HowItWorks() {
                           <Icon className="h-4 w-4" aria-hidden="true" />
                         </span>
                       </div>
-                      {visual.ai && (
-                        <span className="absolute right-4 top-4 rounded-full bg-overlay/70 px-2 py-0.5 text-[11px] font-bold text-white">
-                          {h.aiBadge}
-                        </span>
-                      )}
 
                       <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
                         <h3 className="text-xl font-bold text-white md:text-2xl">{step.title}</h3>

@@ -1,34 +1,42 @@
-# Image credits
+# Image record (internal)
 
-Real photos in this folder were downloaded from Wikimedia Commons, resized and converted to WebP for the web.
-Licences were checked on each file page on 2026-11-19. One image is AI-generated and is labelled as such
-on the site and below; it is an illustration, not a photo of a real scene.
+Internal record of every image in this folder. It is **not displayed on the site**.
 
-## Real photos
+Policy: the site uses only images that need no attribution. That means public domain (works of U.S. federal employees, such as USDA, U.S. military and EPA/NARA photos) or CC0, plus images made for the project. Files tagged CC BY or CC BY-SA are not used. That includes files that also carry a public-domain tag next to a Flickr CC licence. Licences were re-checked on each Wikimedia Commons file page (licence template and categories) on 2026-11-19. All photos were resized or cropped as noted, converted to WebP and stripped of metadata.
 
-| File | Subject | Author / agency | License | Source |
-|---|---|---|---|---|
-| `usaid-warehouse-miami.webp` | USAID logistics warehouse (Crowley Logistics), Miami, FL, 2011-08-26 | Lance Cheung / U.S. Department of Agriculture | Public domain (`PD-USGov-USDA`); also published on Flickr under CC BY 2.0 | https://commons.wikimedia.org/wiki/File:A_warehouse_full_of_USAID_goods_-_20110826-FS-LSC-0046_-_Flickr_-_USDAgov.jpg (orig. https://www.flickr.com/photos/usdagov/6098229518/) |
-| `food-aid-truck-haiti.webp` | USAID Food for Peace sacks loaded on a truck for distribution, Port-au-Prince, Haiti, 2010-01-30 | R. Gustafson / USAID | Public domain (`PD-USGov-USAID`); also published on Flickr under CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Food_Aid_Loaded_for_Distribution_(4322712372).jpg (orig. https://www.flickr.com/photos/usaid_images/4322712372/) |
-| `food-warehouse-mutare.webp` | Food warehouse in Mutare, Zimbabwe, 2016-07-26 | USAID Zimbabwe ("USAID in Africa") | Public domain (`PD-USGov-USAID`) | https://commons.wikimedia.org/wiki/File:Food_in_warehouse_in_Mutare_Zimbabwe_(36273607594).jpg (orig. https://www.flickr.com/photos/usaidafrica/36273607594/) |
-| `port-sudan-food-aid-unloading.webp` | Unloading food aid for Darfur at Port Sudan harbour | USAID | Public domain (`PD-USGov-AID`) | https://commons.wikimedia.org/wiki/File:Sudan_Port_Sudan_Harbor_USAID2.jpg |
-| `wheat-harvest-indiana.webp` | Wheat harvest, Brownsburg, Indiana, 2021-06-28 | Brandon O'Connor / USDA NRCS | Public domain (`PD-USGov-USDA`; Flickr: Public Domain Mark) | https://commons.wikimedia.org/wiki/File:Indiana_Wheat_Harvest_(20210628-NRCS-BJOC-005).jpg (orig. https://www.flickr.com/photos/usdagov/51366943647) |
-| `rice-harvest-texas.webp` | Rice harvest with grain-cart tractor, 3S Ranch near El Campo, Texas, 2020-07-24 | U.S. Department of Agriculture (USDAgov) | Public domain (U.S. government work) | https://commons.wikimedia.org/wiki/File:Harvest_(20200724-NRCS-LSC-0204).jpg |
-| `grain-ship-loading-duluth.webp` | "Dust fills air as ships are loaded from the Cargill grain elevator", Duluth, Minnesota, June 1973 (saturation reduced) | Donald Emmerich / U.S. EPA DOCUMERICA; U.S. National Archives (NARA 551577, 412-DA-9092) | Public domain (`PD-USGov-EPA`) | https://commons.wikimedia.org/wiki/File:Dust_fills_air_as_ships_are_loaded_from_the_Cargill_grain_elevator_-_NARA_-_551577.jpg |
-| `grain-elevators-st-albert.webp` | Grain elevators in St. Albert, Alberta, Canada, 2010-08-02 | WinterforceMedia (Commons user WinterE229) | CC0 1.0 | https://commons.wikimedia.org/wiki/File:Grain_Elevators_St_Albert_Alberta_Canada_02A.jpg |
-| `kwinana-grain-terminal.webp` | Ships off the Kwinana grain loading terminal, Western Australia, 2019-05-26 (resized, converted to WebP) | Calistemon | **CC BY-SA 4.0** (https://creativecommons.org/licenses/by-sa/4.0/) — attribution required; derivatives under the same licence | https://commons.wikimedia.org/wiki/File:Ships_at_the_Kwinana_grain_loading_terminal,_May_2019.jpg |
-| `petonville-food-distribution.webp` | USAID-provided lentils and soy oil readied for distribution, Petonville, Haiti, 2010-01-27 (cropped) | USAID | Public domain (U.S. government work) | https://commons.wikimedia.org/wiki/File:USAID_Food_Distribution_site_in_Petonville_(4322120017).jpg (orig. https://www.flickr.com/photos/usaid_images/4322120017/) |
-| `haiti-food-aid-sacks.webp` | Food-aid sacks stacked in trucks for distribution, Port-au-Prince, Haiti, 2010-01-30 (cropped to the sacks) | R. Gustafson / USAID | Public domain (U.S. government work) | https://commons.wikimedia.org/wiki/File:Haitians_Stack_USAID%27s_Food_Aid_in_Trucks_for_Distribution_(4322720760).jpg (orig. https://www.flickr.com/photos/usaid_images/4322720760/) |
+## Photos in use
 
-Public-domain status does not imply endorsement by USAID, USDA, EPA, NARA or the U.S. government. Logos or company
-names visible in some photos (USAID marks, a Cargill sign) are shown only as part of the documentary scene and do not
-indicate any partnership with GrainBridge.
+| File | Used in | Subject | Author / agency | License | Source |
+|---|---|---|---|---|---|
+| `port-sudan-food-aid-unloading.webp` | Hero | Unloading food aid for Darfur at Port Sudan harbour | USAID | Public domain (`PD-USGov-AID`), no CC tag | https://commons.wikimedia.org/wiki/File:Sudan_Port_Sudan_Harbor_USAID2.jpg |
+| `food-bank-warehouse-aisle-lorton.webp` | Value section banner | Pallet racks of food cases in a food bank warehouse, Lorton, Virginia, 2025-01-10 (16:9 crop) | USDA Food and Nutrition Service | Public domain (`PD-USGov-USDA`), no CC tag | https://commons.wikimedia.org/wiki/File:The_Emergency_Food_Assistance_Program_(TEFAP)_(20250110-USDA-FNS-UNK-057).jpg |
+| `flour-pallets-truck-ancona.webp` | Value section, donors | Airman inspecting a truckload of flour, Operation Provide Promise, Ancona, Italy, 1995-05-08 (3:4 crop) | SSgt Mike Reinhardt, U.S. Air Force (DoD/DVIC via NARA/DPLA) | Public domain (`PD-USGov-Military`), no CC tag | https://commons.wikimedia.org/wiki/File:Operation_Provide_Promise._U.S._Air_Force_SENIOR_AIRMAN_Harry_B._Reever,_with_the_436th_Aerial_Port_Squadron,_Dover_Air_Force_Base,_Del.,_inspects_a_truck_load_of_flour_that_has_arr_-_DPLA_-_d847c17b3c62ecf5327962d131f5a92b.jpeg |
+| `food-warehouse-mutare.webp` | Value section (food providers); dashboard shortage tab | Food warehouse in Mutare, Zimbabwe, 2016-07-26 | USAID Zimbabwe | Public domain (`PD-USGov-USAID`), no CC tag | https://commons.wikimedia.org/wiki/File:Food_in_warehouse_in_Mutare_Zimbabwe_(36273607594).jpg |
+| `grain-ship-loading-duluth.webp` | Value section (transport industry) | Ships loaded from the Cargill grain elevator, Duluth, Minnesota, June 1973 (saturation reduced) | Donald Emmerich / U.S. EPA DOCUMERICA (NARA 551577) | Public domain (`PD-USGov-EPA`), no CC tag | https://commons.wikimedia.org/wiki/File:Dust_fills_air_as_ships_are_loaded_from_the_Cargill_grain_elevator_-_NARA_-_551577.jpg |
+| `wheat-harvest-indiana.webp` | Value section (nations) | Wheat harvest, Brownsburg, Indiana, 2021-06-28 | Brandon O'Connor / USDA NRCS | Public domain (`PD-USGov-USDA`; Flickr Public Domain Mark), no CC tag | https://commons.wikimedia.org/wiki/File:Indiana_Wheat_Harvest_(20210628-NRCS-BJOC-005).jpg |
+| `corn-pile-elevator-plymouth.webp` | Five steps, step 1 (surplus) | Corn pile beside a grain elevator, Plymouth, Nebraska, 2013-11-26 (2:1 crop; original only 2381 px wide) | Ammodramus (Commons user) | CC0 1.0 (`Cc-zero`) | https://commons.wikimedia.org/wiki/File:Plymouth,_Nebraska_corn_pile_1.JPG |
+| `grain-hopper-cars-westwego.webp` | Five steps, step 3 (freight) | Grain hopper rail cars at the Westwego export grain elevator, Nine Mile Point, Louisiana, 2022-03-10 | Lance Cheung / USDA | Public domain (`PD-USGov-USDA`), no CC tag | https://commons.wikimedia.org/wiki/File:Cargill-Westwego_Grain_Elevator_and_port_facility,_Nine_Mile_Point,_Louisiana,_10_March_2022_-_07.jpg |
+| `relief-sacks-unloading-palanan.webp` | Five steps, step 4 (unloading) | Unloading rice and relief goods from helicopters after Typhoon Megi, Palanan, Philippines, 2010-10-22 (16:9 crop) | U.S. Marine Corps (photo ID 101022-M-7799V-086) | Public domain (`PD-USGov-Military`), no CC tag | https://commons.wikimedia.org/wiki/File:USMC-101022-M-7799V-086.jpg |
+| `grain-inspection-corn-kernels.webp` | Five steps, step 5 (impact reported) | USDA FGIS inspector sorting corn kernels from a grain sample, Port of New Orleans, 2023-02-01 | Tabitha Bartley / USDA | Public domain (`PD-USGov-USDA`), no CC tag | https://commons.wikimedia.org/wiki/File:US_Dept_Agriculture_FGIS_Port_of_New_Orleans,_February_2023_-_06.jpg |
+| `rice-harvest-texas.webp` | Need section photo strip | Rice harvest with grain-cart tractor near El Campo, Texas, 2020-07-24 | USDA | Public domain (`PD-USGov-USDA`), no CC tag | https://commons.wikimedia.org/wiki/File:Harvest_(20200724-NRCS-LSC-0204).jpg |
+| `grain-elevators-st-albert.webp` | Dashboard surplus tab | Grain elevators in St. Albert, Alberta, Canada, 2010-08-02 | WinterforceMedia (Commons user WinterE229) | CC0 1.0 | https://commons.wikimedia.org/wiki/File:Grain_Elevators_St_Albert_Alberta_Canada_02A.jpg |
+| `grain-terminal-ship-destrehan.webp` | Match & donate band | Bulk carrier loading at a grain export terminal, Destrehan, Louisiana, 1996-09-01 (aerial; light contrast and saturation boost) | USDA (GIPSA/FGIS) | Public domain (`PD-USGov-USDA`), no CC tag | https://commons.wikimedia.org/wiki/File:150th_Anniversary_of_U_S_Department_of_Agriculture-Historical_imagery_(20120106-OC-AMW-0780).jpg |
+| `rice-sacks-stack-iloilo.webp` | Impact section background; donation modal strip | 100-lb rice sacks stacked for helicopter delivery after Typhoon Fengshen, Iloilo, Philippines, 2008-06-30 (2:1 crop, no people) | Spike Call, U.S. Navy | Public domain (`PD-USGov-Military-Navy`; also Public Domain Mark), no CC BY tag | https://commons.wikimedia.org/wiki/File:US_Navy_080630-N-5961C-008_100-pound_sacks_of_rice_are_stacked_before_being_loaded_into_U.S._Navy_helicopters_assigned_to_the_Ronald_Reagan_Carrier_Strike_Group.jpg |
 
-## AI-generated image
+Public-domain status does not imply endorsement by USDA, USAID, EPA, NARA, the U.S. Department of Defense or the U.S. government. Logos and company names that appear in some photos (USAID marks, a Cargill sign, railroad marks on hopper cars, packaging print) are only part of the documentary scene. They do not indicate any partnership with GrainBridge.
 
-| File | Used for | How it was made | Status |
-|---|---|---|---|
-| `ai-matching-planning-table.webp` | "How it works" step 2 (matching) thumbnail | Generated 2026-11-19 with OpenAI gpt-image (via the codex CLI). Prompt summary: realistic documentary-style top-down photo of a logistics planning table — an unlabelled world map with pins and red string routes, jars of wheat, maize and rice, a burlap sack, a blank clipboard; no people, faces, hands, logos or text. | **AI-generated image** — an illustration, not a photo of a real place or event. Labelled "AI 생성 이미지 / AI-generated image" on the site. |
+## Image made for the project
 
-No real freely-licensed photo shows the "matching" step (a planning and calculation task), so this one slot uses a
-generated illustration. All other slots use real photos.
+| File | Used in | How it was made |
+|---|---|---|
+| `ai-matching-planning-table.webp` | Five steps, step 2 (matching) | Generated on 2026-11-19 with OpenAI gpt-image (via the codex CLI) for this project. The prompt asked for a realistic top-down photo of a logistics planning table with an unlabelled world map, pins and string routes, jars of wheat, maize and rice, a burlap sack and a blank clipboard, with no people, faces, hands, logos or text. It is an illustration, not a photo of a real place or event. |
+
+## Removed on 2026-11-19
+
+These files were removed because their Commons pages carry a CC BY or CC BY-SA tag, which requires visible attribution:
+
+- `kwinana-grain-terminal.webp`: CC BY-SA 4.0 only. Replaced by `grain-terminal-ship-destrehan.webp`.
+- `usaid-warehouse-miami.webp`: PD-USGov-USDA plus a Flickr CC BY 2.0 tag. Replaced by `food-bank-warehouse-aisle-lorton.webp`.
+- `food-aid-truck-haiti.webp`: PD-USGov-USAID plus a Flickr CC BY-SA 2.0 tag. Replaced by `flour-pallets-truck-ancona.webp`.
+- `haiti-food-aid-sacks.webp`: PD-USGov-USAID plus a Flickr CC BY-SA 2.0 tag. Replaced by `rice-sacks-stack-iloilo.webp` (modal).
+- `petonville-food-distribution.webp`: PD-USGov-USAID plus a Flickr CC BY-SA 2.0 tag. Replaced by `grain-inspection-corn-kernels.webp` (step 5) and `rice-sacks-stack-iloilo.webp` (impact background).

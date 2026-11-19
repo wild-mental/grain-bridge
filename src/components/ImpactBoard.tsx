@@ -8,7 +8,7 @@ import { useLanguage } from "@/i18n/LanguageProvider";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 import CountUp from "./CountUp";
-import petonville from "../../public/images/petonville-food-distribution.webp";
+import riceSacks from "../../public/images/rice-sacks-stack-iloilo.webp";
 
 const impactData = {
   tonnesMoved: 5300000,
@@ -51,7 +51,7 @@ export default function ImpactBoard() {
 
   return (
     <section id="impact" aria-labelledby="impact-title" className="relative isolate scroll-mt-24 overflow-hidden bg-primary py-16 text-primary-foreground md:py-24">
-      <Image src={petonville} alt={d.bgAlt} fill placeholder="blur" sizes="100vw" className="-z-20 object-cover" />
+      <Image src={riceSacks} alt={d.bgAlt} fill placeholder="blur" sizes="100vw" className="-z-20 object-cover" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/95 via-primary/90 to-overlay/95" aria-hidden="true" />
 
       <div className="container px-4 sm:px-8">

@@ -9,15 +9,6 @@ function koMillions(millions: number): string {
   return rest === 0 ? `${eok}억` : `${eok}억 ${rest.toLocaleString('ko-KR')}만`;
 }
 
-export type CreditItem = {
-  subject: string;
-  author: string;
-  license: string;
-  href?: string;
-  licenseHref?: string;
-  ai?: boolean;
-};
-
 export const dictionary = {
   ko: {
     langToggleLabel: '언어 선택',
@@ -29,14 +20,14 @@ export const dictionary = {
       title: '격차를 잇고, 희망을 채웁니다.',
       body: 'GrainBridge는 전 세계의 남는 식량을 도움이 필요한 지역과 연결합니다. 데이터를 살펴보고, 운송을 후원하고, 내 기여가 만드는 변화를 확인하세요.',
       imageAlt: '수단 포트수단 항구에서 작업자들이 컨베이어로 내린 식량 원조 자루를 트럭에 싣는 모습',
-      photoCaption: '수단 포트수단 항구의 식량 원조 하역 · 사진 USAID (퍼블릭 도메인)',
+      photoCaption: '수단 포트수단 항구의 식량 원조 하역',
     },
     trust: {
       label: '신뢰 원칙',
       items: [
         { title: '기부금 100%는 운송·물류비로', body: '식량 구매비나 운영비가 아니라, 선택한 운송 건의 운임과 하역비에만 씁니다.' },
         { title: '출처를 밝힌 데이터', body: '위기 인구 수치는 식량위기 글로벌 보고서(GRFC)의 IPC/CH 분석을 따르고, 차트마다 출처를 적었습니다.' },
-        { title: '시연용 프로토타입', body: '교육용 시연 사이트입니다. 실제 결제나 모금은 이루어지지 않습니다.' },
+        { title: '운송 건 단위로 공개', body: '운송 건마다 목표 금액, 모금 현황, 운송사, 예상 도착일을 따로 보여 드립니다.' },
       ],
       principlesLink: '운영 원칙 보기',
     },
@@ -46,12 +37,12 @@ export const dictionary = {
       body: '남는 곳의 식량과 모자란 곳의 굶주림 사이에는 "운송"이라는 빈칸 하나가 있습니다. GrainBridge는 그 빈칸을 기부로 채워, 기부자와 원조자 모두가 이기는 구조를 만듭니다.',
       highlights: ['식량 구매비 없이 운송비만', '지원 지역을 직접 선택', '폐기 대신 전달'],
       cta: '지금 운송 후원하기',
-      bannerAlt: '미국 국제개발처(USAID) 물류창고 선반에 USAID 표시가 찍힌 구호물자 상자가 천장까지 쌓여 있는 모습',
+      bannerAlt: '식품 상자 팔레트가 높게 쌓인 랙 사이로 길게 뻗은 푸드뱅크 물류창고 통로 (미국 버지니아주)',
       donors: {
         label: '기부자',
         title: '가장 시급한 곳에, 가장 효율적으로',
         body: '내 성금이 어디에, 어떻게 쓰이는지 몰라 망설였다면 이제 기부의 목적지와 쓰임새를 직접 정하세요.',
-        imageAlt: '아이티 포르토프랭스에서 배급을 위해 트럭 짐칸에 가득 실린 USAID 식량 원조 자루',
+        imageAlt: '비행장에 선 트럭 짐칸에 비닐로 감싼 밀가루 포대 팔레트가 줄지어 실려 있고, 끝쪽에서 작업자가 적재 상태를 확인하는 모습',
         points: [
           {
             title: '돕고 싶은 지역에, 가장 시급한 식량을',
@@ -93,15 +84,14 @@ export const dictionary = {
       eyebrow: '기부가 식량이 되기까지',
       title: '다섯 단계로 이어지는 운송 후원',
       body: '남는 곡물을 찾는 일부터 결과 보고까지, 내 후원이 어디를 지나 누구에게 닿는지 단계별로 보여 드립니다.',
-      aiBadge: 'AI 생성',
       galleryLabel: '운송 후원 5단계',
       swipeHint: '옆으로 넘겨 보세요',
       steps: [
-        { title: '잉여 확인', body: '버려질 위기에 놓인 잉여 곡물을 찾아 등록합니다.', imageAlt: '미국 인디애나주 밀밭에서 콤바인이 수확한 밀을 운반 트랙터로 옮겨 담는 모습' },
-        { title: '매칭', body: '필요량·거리·운송 여건을 따져 효과가 가장 큰 운송 건을 고릅니다.', imageAlt: 'AI 생성 이미지: 곡물 견본 병 옆에 핀과 실로 경로를 표시한 세계지도가 놓인 물류 계획 책상' },
-        { title: '운송비 후원', body: '기부자는 운송 건을 골라 운임과 물류비만 후원합니다.', imageAlt: '미국 덜루스 항구에서 곡물 엘리베이터가 화물선에 곡물을 싣는 모습 (1973년)' },
-        { title: '하역·배급', body: '항구에서 내린 곡물을 현지 배급 거점으로 옮깁니다.', imageAlt: '수단 포트수단 항구에서 작업자들이 식량 원조 자루를 트럭에 싣는 모습' },
-        { title: '임팩트 보고', body: '전달량과 도달 인원을 집계해 기부자에게 알립니다.', imageAlt: '아이티 페통빌 배급소에서 작업자가 렌틸콩 자루를 정리하는 모습' },
+        { title: '잉여 확인', body: '버려질 위기에 놓인 잉여 곡물을 찾아 등록합니다.', imageAlt: '미국 네브래스카주의 곡물 엘리베이터 옆 맨땅에 거대하게 쌓인 옥수수 더미' },
+        { title: '매칭', body: '필요량·거리·운송 여건을 따져 효과가 가장 큰 운송 건을 고릅니다.', imageAlt: '곡물 견본 병 옆에 핀과 실로 경로를 표시한 세계지도가 놓인 물류 계획 책상' },
+        { title: '운송비 후원', body: '기부자는 운송 건을 골라 운임과 물류비만 후원합니다.', imageAlt: '미국 루이지애나주의 대형 곡물 수출 엘리베이터 앞에 줄지어 선 곡물 호퍼 화차' },
+        { title: '하역·배급', body: '항구에서 내린 곡물을 현지 배급 거점으로 옮깁니다.', imageAlt: '수송 헬리콥터가 대기하는 활주로에서 작업자들이 구호 식량 포대와 상자를 날라 쌓는 모습 (필리핀 팔라난)' },
+        { title: '임팩트 보고', body: '전달량과 도달 인원을 집계해 기부자에게 알립니다.', imageAlt: '검사 책상 위에서 핀셋으로 옥수수 낟알을 골라 세는 곡물 검사관의 손' },
       ],
     },
     need: {
@@ -144,7 +134,7 @@ export const dictionary = {
       headlineSurplus: '잉여',
       headlineShortage: '부족',
       headlineNote: '대륙별 합계, 백만 톤(Mt)',
-      source: '시연용 예시 데이터: 2020–2024년 언론에 보도된 사례를 바탕으로 재구성한 추정치이며, 실시간 수치가 아닙니다.',
+      source: '2020–2024년 언론에 보도된 사례를 바탕으로 재구성한 추정치이며, 실시간 수치가 아닙니다.',
       tabSurplus: '잉여 지역',
       tabShortage: '부족 지역',
       tabGlobal: '전체 보기',
@@ -164,9 +154,9 @@ export const dictionary = {
     match: {
       eyebrow: '직접 고르는 운송 후원',
       title: '매칭 & 기부',
-      bandAlt: '호주 서부 콰이나나 곡물 선적 터미널 앞바다에 정박한 벌크 화물선들',
+      bandAlt: '미시시피강변 곡물 수출 터미널의 선적 설비 아래에 정박한 벌크선을 위에서 내려다본 모습 (미국 루이지애나주)',
       mockBadge: '예시 데이터',
-      mockNote: '운송사·예상 도착·추적 정보는 시연용 예시 값입니다.',
+      mockNote: '운송사·예상 도착·추적 정보는 예시 값입니다.',
       carrier: '운송사',
       carrierValue: (n: string) => `예시 운송사 ${n}`,
       eta: '예상 도착',
@@ -185,7 +175,7 @@ export const dictionary = {
     },
     impact: {
       eyebrow: '임팩트',
-      bgAlt: '아이티 페통빌 배급소에 쌓인 식량 원조 자루',
+      bgAlt: '끈으로 묶은 쌀 포대가 겹겹이 쌓인 더미',
       title: '우리가 함께 만든 임팩트',
       body: '모든 기부가 더 큰 흐름이 되어 전 세계에 실질적인 변화를 만듭니다.',
       people: '지원받은 사람',
@@ -202,11 +192,11 @@ export const dictionary = {
       seriesForecast: '2025년 전달 목표 (예측, 빗금)',
       headline: (delivered: string, required: string) => `${required} Mt 중 ${delivered} Mt`,
       headlineNote: (pct: number) => `2025년 필요량의 ${pct}%를 전달하는 것이 목표입니다 (예측)`,
-      source: '필요 곡물량: GRFC 위기 인구를 바탕으로 한 GrainBridge 추정 · 전달량: 시연용 예측치',
+      source: '필요 곡물량: GRFC 위기 인구를 바탕으로 한 GrainBridge 추정 · 전달량: GrainBridge 예측치',
     },
     donation: {
       title: '운송 후원하기',
-      imageAlt: '배급을 위해 트럭에 쌓인 식량 원조 자루 (아이티 포르토프랭스)',
+      imageAlt: '끈으로 묶은 흰색·황갈색 쌀 포대가 겹겹이 쌓인 모습',
       stepLabel: (n: number, total: number) => `${n} / ${total} 단계`,
       confirmTitle: '후원할 운송 건 확인',
       confirmDesc: '아래 운송 건의 운임과 물류비를 후원합니다.',
@@ -239,12 +229,11 @@ export const dictionary = {
       privacy: '개인정보 처리방침',
       terms: '이용약관',
       principles: '운영 원칙',
-      prototype: '교육용 시연 프로토타입입니다. 실제 결제와 모금은 이루어지지 않으며, 대시보드와 매칭 수치에는 예시 데이터가 섞여 있습니다.',
     },
     principles: {
       eyebrow: '운영 원칙',
       title: 'GrainBridge가 지키는 약속',
-      intro: '아래 원칙은 서비스가 실제로 운영될 때 지킬 약속을 설계한 것입니다. 지금 사이트는 교육용 시연 프로토타입이므로 실제 모금과 집행은 이루어지지 않습니다.',
+      intro: '기부금을 쓰는 방식부터 정보를 공개하는 방식까지, GrainBridge가 운영의 기준으로 삼는 원칙입니다.',
       items: [
         { title: '기부금 100%는 운송·물류비로', body: '기부금은 기부자가 고른 운송 건의 운임, 하역비, 창고 보관비에만 씁니다. 플랫폼 운영비는 기부금과 별도의 재원으로 충당합니다.' },
         { title: '운송 건 단위로 공개', body: '각 운송 건의 목표 금액, 모금액, 운송사, 예상 도착일, 추적 정보를 운송 건 단위로 공개합니다.' },
@@ -253,27 +242,6 @@ export const dictionary = {
         { title: '존엄을 지키는 사진', body: '수혜자, 특히 아이의 얼굴을 앞세운 사진은 쓰지 않습니다. 물류와 일하는 사람의 모습으로 과정을 보여 줍니다.' },
       ],
       back: '홈으로 돌아가기',
-    },
-    credits: {
-      title: '사진 출처',
-      note: '실제 사진은 Wikimedia Commons에서 라이선스를 확인한 사진(퍼블릭 도메인, CC0, CC BY-SA 4.0)입니다. "AI 생성 이미지"로 표시한 1장은 설명을 돕기 위해 만든 이미지로, 실제 현장 사진이 아닙니다.',
-      source: '원본 보기',
-      license: '라이선스',
-      aiLabel: 'AI 생성 이미지',
-      items: [
-        { subject: 'USAID 물류창고, 미국 마이애미 (2011)', author: 'Lance Cheung / 미국 농무부(USDA)', license: '퍼블릭 도메인 (미국 정부 저작물) · Flickr 원본 CC BY 2.0', href: 'https://commons.wikimedia.org/wiki/File:A_warehouse_full_of_USAID_goods_-_20110826-FS-LSC-0046_-_Flickr_-_USDAgov.jpg' },
-        { subject: '식량 원조 트럭, 아이티 포르토프랭스 (2010)', author: 'R. Gustafson / 미국 국제개발처(USAID)', license: '퍼블릭 도메인 (미국 정부 저작물) · Flickr 원본 CC BY-SA 2.0', href: 'https://commons.wikimedia.org/wiki/File:Food_Aid_Loaded_for_Distribution_(4322712372).jpg' },
-        { subject: '식량 창고, 짐바브웨 무타레 (2016)', author: 'USAID Zimbabwe', license: '퍼블릭 도메인 (미국 정부 저작물)', href: 'https://commons.wikimedia.org/wiki/File:Food_in_warehouse_in_Mutare_Zimbabwe_(36273607594).jpg' },
-        { subject: '식량 원조 하역, 수단 포트수단 항구', author: '미국 국제개발처(USAID)', license: '퍼블릭 도메인 (미국 정부 저작물)', href: 'https://commons.wikimedia.org/wiki/File:Sudan_Port_Sudan_Harbor_USAID2.jpg' },
-        { subject: '밀 수확, 미국 인디애나주 (2021)', author: "Brandon O'Connor / 미국 농무부 자연자원보전청(USDA NRCS)", license: '퍼블릭 도메인 (미국 정부 저작물)', href: 'https://commons.wikimedia.org/wiki/File:Indiana_Wheat_Harvest_(20210628-NRCS-BJOC-005).jpg' },
-        { subject: '쌀 수확, 미국 텍사스주 엘캄포 (2020)', author: '미국 농무부(USDA)', license: '퍼블릭 도메인 (미국 정부 저작물)', href: 'https://commons.wikimedia.org/wiki/File:Harvest_(20200724-NRCS-LSC-0204).jpg' },
-        { subject: '곡물 엘리베이터의 화물선 선적, 미국 덜루스 (1973)', author: 'Donald Emmerich / 미국 환경보호청 DOCUMERICA (미국 국립기록관리청 NARA 551577)', license: '퍼블릭 도메인 (미국 정부 저작물) · 채도 조정', href: 'https://commons.wikimedia.org/wiki/File:Dust_fills_air_as_ships_are_loaded_from_the_Cargill_grain_elevator_-_NARA_-_551577.jpg' },
-        { subject: '곡물 엘리베이터, 캐나다 앨버타주 세인트앨버트 (2010)', author: 'WinterforceMedia (WinterE229)', license: 'CC0 1.0 (퍼블릭 도메인 기증)', href: 'https://commons.wikimedia.org/wiki/File:Grain_Elevators_St_Albert_Alberta_Canada_02A.jpg' },
-        { subject: '콰이나나 곡물 선적 터미널의 화물선, 호주 서부 (2019)', author: 'Calistemon', license: 'CC BY-SA 4.0 · 크기 조정·WebP 변환', href: 'https://commons.wikimedia.org/wiki/File:Ships_at_the_Kwinana_grain_loading_terminal,_May_2019.jpg', licenseHref: 'https://creativecommons.org/licenses/by-sa/4.0/deed.ko' },
-        { subject: '식량 배급소, 아이티 페통빌 (2010)', author: '미국 국제개발처(USAID)', license: '퍼블릭 도메인 (미국 정부 저작물)', href: 'https://commons.wikimedia.org/wiki/File:USAID_Food_Distribution_site_in_Petonville_(4322120017).jpg' },
-        { subject: '트럭에 쌓인 식량 원조 자루, 아이티 포르토프랭스 (2010)', author: 'R. Gustafson / 미국 국제개발처(USAID)', license: '퍼블릭 도메인 (미국 정부 저작물) · 일부 잘라냄', href: "https://commons.wikimedia.org/wiki/File:Haitians_Stack_USAID%27s_Food_Aid_in_Trucks_for_Distribution_(4322720760).jpg" },
-        { subject: '물류 계획 책상 위의 세계지도와 곡물 견본 ("이용 방법" 2단계)', author: 'OpenAI gpt-image로 생성 (GrainBridge 설명용)', license: 'AI 생성 이미지 · 실제 현장 사진이 아님', ai: true },
-      ],
     },
   },
   en: {
@@ -286,14 +254,14 @@ export const dictionary = {
       title: 'Bridging Gaps, Nourishing Hope.',
       body: 'GrainBridge connects global food surplus with regions in need. Explore the data, support shipments, and witness the impact of your contribution.',
       imageAlt: 'Workers at Port Sudan harbour loading food-aid sacks from a conveyor onto trucks',
-      photoCaption: 'Unloading food aid at Port Sudan harbour · Photo USAID (public domain)',
+      photoCaption: 'Unloading food aid at Port Sudan harbour',
     },
     trust: {
       label: 'Our commitments',
       items: [
         { title: '100% of donations fund freight', body: 'Not food purchases or overheads: only the freight and handling of the shipment you choose.' },
         { title: 'Data with named sources', body: 'Crisis figures follow the IPC/CH analysis in the Global Report on Food Crises (GRFC); every chart cites its source.' },
-        { title: 'Demonstration prototype', body: 'This is a teaching demo. No real payments or fundraising take place.' },
+        { title: 'Open, shipment by shipment', body: 'Every shipment shows its own target, amount raised, carrier and ETA.' },
       ],
       principlesLink: 'Read our principles',
     },
@@ -303,12 +271,12 @@ export const dictionary = {
       body: 'Between surplus food in one place and hunger in another lies a single missing piece: transport. GrainBridge fills that gap with donations, creating a model where donors and aid providers all win.',
       highlights: ['Fund only the freight, not the food', 'Choose the region you support', 'Delivered, not discarded'],
       cta: 'Fund a shipment now',
-      bannerAlt: 'Shelves in a USAID logistics warehouse stacked to the ceiling with relief-supply boxes marked USAID',
+      bannerAlt: 'A long aisle between tall pallet racks stacked with cases of food in a food bank warehouse in Virginia, USA',
       donors: {
         label: 'Donors',
         title: 'Where it is needed most, as efficiently as possible',
         body: 'If you have ever hesitated because you could not tell where or how your gift would be used, now you choose both the destination and the purpose.',
-        imageAlt: 'A truck bed in Port-au-Prince, Haiti, piled high with USAID food-aid sacks ready for distribution',
+        imageAlt: 'Shrink-wrapped pallets of flour sacks loaded along a truck bed on an airfield, with a worker checking the load at the far end',
         points: [
           {
             title: 'The region you care about, the need that cannot wait',
@@ -350,15 +318,14 @@ export const dictionary = {
       eyebrow: 'From donation to food',
       title: 'Five steps from surplus to delivery',
       body: 'From finding surplus grain to reporting results, see where your support travels and whom it reaches.',
-      aiBadge: 'AI',
       galleryLabel: 'The five steps',
       swipeHint: 'Swipe to see more',
       steps: [
-        { title: 'Surplus found', body: 'Grain at risk of going to waste is found and listed.', imageAlt: 'A combine unloading freshly harvested wheat into a grain cart on a farm in Indiana, USA' },
-        { title: 'Matched', body: 'Need, distance and feasibility pick the highest-impact shipments.', imageAlt: 'AI-generated image: a logistics planning desk with grain sample jars and a world map marked with pins and string routes' },
-        { title: 'Freight funded', body: 'Donors choose a shipment and fund only its freight.', imageAlt: 'A grain elevator loading grain onto cargo ships in Duluth harbour, USA (1973)' },
-        { title: 'Unloaded & distributed', body: 'Grain unloaded at port moves on to local distribution points.', imageAlt: 'Workers at Port Sudan harbour loading food-aid sacks onto trucks' },
-        { title: 'Impact reported', body: 'Tonnes delivered and people reached are reported to donors.', imageAlt: 'A worker arranging sacks of lentils at a food distribution site in Petonville, Haiti' },
+        { title: 'Surplus found', body: 'Grain at risk of going to waste is found and listed.', imageAlt: 'A huge pile of corn heaped on bare ground beside a grain elevator in Nebraska, USA' },
+        { title: 'Matched', body: 'Need, distance and feasibility pick the highest-impact shipments.', imageAlt: 'A logistics planning desk with grain sample jars and a world map marked with pins and string routes' },
+        { title: 'Freight funded', body: 'Donors choose a shipment and fund only its freight.', imageAlt: 'A line of covered grain hopper rail cars in front of a large export grain elevator in Louisiana, USA' },
+        { title: 'Unloaded & distributed', body: 'Grain unloaded at port moves on to local distribution points.', imageAlt: 'Workers carry sacks and boxes of relief food to a growing pile on an airstrip while a transport helicopter waits (Palanan, Philippines)' },
+        { title: 'Impact reported', body: 'Tonnes delivered and people reached are reported to donors.', imageAlt: 'A grain inspector’s hands using tweezers to sort and count corn kernels on an inspection desk' },
       ],
     },
     need: {
@@ -401,7 +368,7 @@ export const dictionary = {
       headlineSurplus: 'Surplus',
       headlineShortage: 'Shortage',
       headlineNote: 'Totals across continents, million tonnes (Mt)',
-      source: 'Illustrative demo data: estimates reconstructed from cases reported in the media in 2020–2024. These are not live figures.',
+      source: 'Estimates reconstructed from cases reported in the media in 2020–2024. These are not live figures.',
       tabSurplus: 'Surplus Zones',
       tabShortage: 'Shortage Zones',
       tabGlobal: 'Global View',
@@ -421,9 +388,9 @@ export const dictionary = {
     match: {
       eyebrow: 'Choose your shipment',
       title: 'Match & Donate',
-      bandAlt: 'Bulk carriers anchored off the Kwinana grain loading terminal, Western Australia',
+      bandAlt: 'Aerial view of a bulk carrier moored beneath the loading gantries of a grain export terminal on the Mississippi River, Louisiana, USA',
       mockBadge: 'Sample data',
-      mockNote: 'Carrier, ETA and tracking details are sample values for this demo.',
+      mockNote: 'Carrier, ETA and tracking details are sample values.',
       carrier: 'Carrier',
       carrierValue: (n: string) => `Sample carrier ${n}`,
       eta: 'ETA',
@@ -442,7 +409,7 @@ export const dictionary = {
     },
     impact: {
       eyebrow: 'Impact',
-      bgAlt: 'Sacks of food aid stacked at a distribution site in Petonville, Haiti',
+      bgAlt: 'A large heap of tied rice sacks stacked on top of one another',
       title: 'Our Collective Impact',
       body: 'Every donation contributes to a larger movement, creating tangible change across the globe.',
       people: 'People Supported',
@@ -459,11 +426,11 @@ export const dictionary = {
       seriesForecast: '2025 delivery target (forecast, hatched)',
       headline: (delivered: string, required: string) => `${delivered} of ${required} Mt`,
       headlineNote: (pct: number) => `Target: deliver ${pct}% of 2025 needs (forecast)`,
-      source: 'Required grain: GrainBridge estimate based on GRFC crisis populations · Delivered: demo forecast',
+      source: 'Required grain: GrainBridge estimate based on GRFC crisis populations · Delivered: GrainBridge forecast',
     },
     donation: {
       title: 'Fund a shipment',
-      imageAlt: 'Food-aid sacks stacked on a truck for distribution in Port-au-Prince, Haiti',
+      imageAlt: 'Tied white and tan rice sacks stacked on top of one another',
       stepLabel: (n: number, total: number) => `Step ${n} of ${total}`,
       confirmTitle: 'Confirm the shipment',
       confirmDesc: 'You are supporting the freight and logistics of this shipment.',
@@ -496,12 +463,11 @@ export const dictionary = {
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
       principles: 'Our principles',
-      prototype: 'A teaching demo prototype. No real payments or fundraising take place, and dashboard and match figures include sample data.',
     },
     principles: {
       eyebrow: 'Our principles',
       title: 'The promises GrainBridge keeps',
-      intro: 'These principles describe the commitments the service would keep in live operation. This site is a teaching demo prototype, so no real fundraising or disbursement takes place.',
+      intro: 'From how donations are spent to how information is shared, these are the principles GrainBridge works by.',
       items: [
         { title: '100% of donations fund freight', body: 'Donations pay only for the freight, handling and storage of the shipment the donor chose. Platform costs are covered from separate funds.' },
         { title: 'Open, shipment by shipment', body: 'Each shipment’s target, amount raised, carrier, ETA and tracking details are published per shipment.' },
@@ -510,27 +476,6 @@ export const dictionary = {
         { title: 'Photos that respect dignity', body: 'We do not lead with close-ups of beneficiaries, especially children. We show the process through logistics and the people doing the work.' },
       ],
       back: 'Back to home',
-    },
-    credits: {
-      title: 'Photo credits',
-      note: 'Real photos come from Wikimedia Commons with verified licences (public domain, CC0, CC BY-SA 4.0). The one image marked "AI-generated image" was created to illustrate a step and is not a photo of a real scene.',
-      source: 'Source',
-      license: 'Licence',
-      aiLabel: 'AI-generated image',
-      items: [
-        { subject: 'USAID logistics warehouse, Miami, USA (2011)', author: 'Lance Cheung / U.S. Department of Agriculture (USDA)', license: 'Public domain (U.S. government work) · Flickr original CC BY 2.0', href: 'https://commons.wikimedia.org/wiki/File:A_warehouse_full_of_USAID_goods_-_20110826-FS-LSC-0046_-_Flickr_-_USDAgov.jpg' },
-        { subject: 'Food-aid truck, Port-au-Prince, Haiti (2010)', author: 'R. Gustafson / U.S. Agency for International Development (USAID)', license: 'Public domain (U.S. government work) · Flickr original CC BY-SA 2.0', href: 'https://commons.wikimedia.org/wiki/File:Food_Aid_Loaded_for_Distribution_(4322712372).jpg' },
-        { subject: 'Food warehouse, Mutare, Zimbabwe (2016)', author: 'USAID Zimbabwe', license: 'Public domain (U.S. government work)', href: 'https://commons.wikimedia.org/wiki/File:Food_in_warehouse_in_Mutare_Zimbabwe_(36273607594).jpg' },
-        { subject: 'Unloading food aid, Port Sudan harbour', author: 'U.S. Agency for International Development (USAID)', license: 'Public domain (U.S. government work)', href: 'https://commons.wikimedia.org/wiki/File:Sudan_Port_Sudan_Harbor_USAID2.jpg' },
-        { subject: 'Wheat harvest, Indiana, USA (2021)', author: "Brandon O'Connor / USDA Natural Resources Conservation Service (NRCS)", license: 'Public domain (U.S. government work)', href: 'https://commons.wikimedia.org/wiki/File:Indiana_Wheat_Harvest_(20210628-NRCS-BJOC-005).jpg' },
-        { subject: 'Rice harvest, El Campo, Texas, USA (2020)', author: 'U.S. Department of Agriculture (USDA)', license: 'Public domain (U.S. government work)', href: 'https://commons.wikimedia.org/wiki/File:Harvest_(20200724-NRCS-LSC-0204).jpg' },
-        { subject: 'Ships loaded from a grain elevator, Duluth, USA (1973)', author: 'Donald Emmerich / U.S. EPA DOCUMERICA (U.S. National Archives, NARA 551577)', license: 'Public domain (U.S. government work) · colour adjusted', href: 'https://commons.wikimedia.org/wiki/File:Dust_fills_air_as_ships_are_loaded_from_the_Cargill_grain_elevator_-_NARA_-_551577.jpg' },
-        { subject: 'Grain elevators, St. Albert, Alberta, Canada (2010)', author: 'WinterforceMedia (WinterE229)', license: 'CC0 1.0 (public domain dedication)', href: 'https://commons.wikimedia.org/wiki/File:Grain_Elevators_St_Albert_Alberta_Canada_02A.jpg' },
-        { subject: 'Ships at the Kwinana grain loading terminal, Western Australia (2019)', author: 'Calistemon', license: 'CC BY-SA 4.0 · resized, converted to WebP', href: 'https://commons.wikimedia.org/wiki/File:Ships_at_the_Kwinana_grain_loading_terminal,_May_2019.jpg', licenseHref: 'https://creativecommons.org/licenses/by-sa/4.0/' },
-        { subject: 'Food distribution site, Petonville, Haiti (2010)', author: 'U.S. Agency for International Development (USAID)', license: 'Public domain (U.S. government work)', href: 'https://commons.wikimedia.org/wiki/File:USAID_Food_Distribution_site_in_Petonville_(4322120017).jpg' },
-        { subject: 'Food-aid sacks stacked on a truck, Port-au-Prince, Haiti (2010)', author: 'R. Gustafson / U.S. Agency for International Development (USAID)', license: 'Public domain (U.S. government work) · cropped', href: "https://commons.wikimedia.org/wiki/File:Haitians_Stack_USAID%27s_Food_Aid_in_Trucks_for_Distribution_(4322720760).jpg" },
-        { subject: 'World map and grain samples on a logistics planning desk ("How it works", step 2)', author: 'Generated with OpenAI gpt-image (illustration for GrainBridge)', license: 'AI-generated image · not a photo of a real scene', ai: true },
-      ],
     },
   },
 };

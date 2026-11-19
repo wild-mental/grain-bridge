@@ -17,8 +17,8 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import Reveal from "./Reveal";
 
-import warehouseBanner from "../../public/images/usaid-warehouse-miami.webp";
-import foodAidTruck from "../../public/images/food-aid-truck-haiti.webp";
+import warehouseBanner from "../../public/images/food-bank-warehouse-aisle-lorton.webp";
+import foodAidTruck from "../../public/images/flour-pallets-truck-ancona.webp";
 import mutareWarehouse from "../../public/images/food-warehouse-mutare.webp";
 import grainShipLoading from "../../public/images/grain-ship-loading-duluth.webp";
 import wheatHarvest from "../../public/images/wheat-harvest-indiana.webp";

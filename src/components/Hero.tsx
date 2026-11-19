@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, BadgeCheck, FileSearch, FlaskConical, type LucideIcon } from "lucide-react";
+import { ArrowDown, ArrowRight, BadgeCheck, Eye, FileSearch, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import portSudan from "../../public/images/port-sudan-food-aid-unloading.webp";
 
-const trustIcons: LucideIcon[] = [BadgeCheck, FileSearch, FlaskConical];
+const trustIcons: LucideIcon[] = [BadgeCheck, FileSearch, Eye];
 
 export default function Hero() {
   const { t } = useLanguage();

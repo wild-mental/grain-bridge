@@ -21,7 +21,7 @@ import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import type { MatchData } from "@/types";
-import foodAidSacks from "../../public/images/haiti-food-aid-sacks.webp";
+import foodAidSacks from "../../public/images/rice-sacks-stack-iloilo.webp";
 
 /**
  * Pledge flow: confirm the shipment → choose an amount → thank-you screen.
