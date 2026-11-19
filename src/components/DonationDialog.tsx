@@ -26,7 +26,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { CreditCard, Heart, PartyPopper } from "lucide-react";
+import Image from "next/image";
+import { CreditCard, FlaskConical, Heart, PartyPopper, Receipt, ShieldCheck } from "lucide-react";
+import { cn } from "@/lib/utils";
+import foodAidSacks from "../../public/images/haiti-food-aid-sacks.webp";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import type { Dictionary } from "@/i18n/dictionary";
 
@@ -80,19 +83,37 @@ export function DonationDialog({ children }: { children: React.ReactNode }) {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[480px]">
+      <DialogContent
+        className={cn(
+          "max-h-[92svh] overflow-y-auto sm:max-w-[480px]",
+          // The close button sits on the photo strip while the form is shown.
+          !isSubmitted && "[&>button:last-child]:rounded-full [&>button:last-child]:bg-overlay/60 [&>button:last-child]:p-1 [&>button:last-child]:text-white [&>button:last-child]:opacity-100",
+        )}
+      >
         {!isSubmitted ? (
           <>
+            {/* Narrow photo strip */}
+            <div className="relative -mx-6 -mt-6 h-28 overflow-hidden sm:rounded-t-lg">
+              <Image src={foodAidSacks} alt={d.imageAlt} fill placeholder="blur" sizes="480px" className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-overlay/70 via-overlay/10 to-overlay/40" aria-hidden="true" />
+              <span className="absolute bottom-3 left-4 inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-foreground shadow">
+                <FlaskConical className="h-3.5 w-3.5" aria-hidden="true" />
+                {d.badge}
+              </span>
+            </div>
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
-                <Heart className="text-primary" /> {d.title}
+                <Heart className="text-primary" aria-hidden="true" /> {d.title}
               </DialogTitle>
               <DialogDescription>
-                {d.desc}
+                {d.desc} <strong className="font-semibold text-foreground">{d.useOfFunds}</strong>
               </DialogDescription>
             </DialogHeader>
+            <p className="rounded-md border border-accent/60 bg-accent/10 px-3 py-2 text-sm font-medium text-foreground" role="note">
+              {d.demoNotice}
+            </p>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 pt-4">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <FormField
                   control={form.control}
                   name="amount"
@@ -170,7 +191,18 @@ export function DonationDialog({ children }: { children: React.ReactNode }) {
                   />
                 </div>
                 
-                <DialogFooter className="pt-4">
+                <ul className="space-y-2 rounded-md bg-muted px-3 py-3 text-xs leading-relaxed text-muted-foreground">
+                  <li className="flex gap-2">
+                    <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-success" aria-hidden="true" />
+                    {d.security}
+                  </li>
+                  <li className="flex gap-2">
+                    <Receipt className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                    {d.receipt}
+                  </li>
+                </ul>
+
+                <DialogFooter className="pt-2">
                   <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
                     {form.formState.isSubmitting ? d.processing : d.submit}
                   </Button>
@@ -180,7 +212,7 @@ export function DonationDialog({ children }: { children: React.ReactNode }) {
           </>
         ) : (
           <div className="flex flex-col items-center justify-center text-center py-8 space-y-4">
-              <PartyPopper className="h-16 w-16 text-accent" />
+              <PartyPopper className="h-16 w-16 text-accent" aria-hidden="true" />
               <DialogTitle className="text-2xl">{d.thanksTitle}</DialogTitle>
               <DialogDescription className="max-w-xs">
                 {d.thanksBody}
