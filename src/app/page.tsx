@@ -21,6 +21,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import MatchMaker from '@/components/MatchMaker';
+import ValueSection from '@/components/ValueSection';
 import { Wand2 } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageProvider';
 
@@ -49,6 +50,8 @@ export default function Home() {
             {t.hero.body}
           </p>
         </section>
+
+        <ValueSection />
 
         <section className="mb-12 md:mb-20">
           <div className="text-center mb-8">

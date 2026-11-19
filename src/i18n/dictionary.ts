@@ -9,6 +9,67 @@ export const dictionary = {
       title: '격차를 잇고, 희망을 채웁니다.',
       body: 'GrainBridge는 전 세계의 남는 식량을 도움이 필요한 지역과 연결합니다. 실시간 데이터를 살펴보고, 운송을 후원하고, 내 기여가 만드는 변화를 확인하세요.',
     },
+    value: {
+      eyebrow: '왜 GrainBridge인가',
+      title: '운송비 한 건이, 버려질 식량을 누군가의 한 끼로 바꿉니다',
+      body: '남는 곳의 식량과 모자란 곳의 굶주림 사이에는 "운송"이라는 빈칸 하나가 있습니다. GrainBridge는 그 빈칸을 기부로 채워, 기부자와 원조자 모두가 이기는 구조를 만듭니다.',
+      highlights: ['식량 구매비 없이 운송비만', '지원 지역을 직접 선택', '폐기 대신 전달'],
+      cta: '지금 운송 후원하기',
+      bannerAlt: '미국 국제개발처(USAID) 물류창고 선반에 USAID 표시가 찍힌 구호물자 상자가 천장까지 쌓여 있는 모습',
+      donors: {
+        label: '기부자',
+        title: '가장 시급한 곳에, 가장 효율적으로',
+        body: '내 성금이 어디에, 어떻게 쓰이는지 몰라 망설였다면 이제 기부의 목적지와 쓰임새를 직접 정하세요.',
+        imageAlt: '아이티 포르토프랭스에서 배급을 위해 트럭 짐칸에 가득 실린 USAID 식량 원조 자루',
+        points: [
+          {
+            title: '돕고 싶은 지역에, 가장 시급한 식량을',
+            body: '막연한 모금함 대신 지원할 지역과 운송 건을 직접 고릅니다. 기부금은 생존과 직결된 식량, 가장 시급한 문제에 곧바로 쓰입니다.',
+          },
+          {
+            title: '식량을 사지 않고, 운송비만으로',
+            body: '식량은 이미 잉여 지역에 있습니다. 그것을 옮기는 운송비만 후원하면 되기에, 같은 금액으로 훨씬 많은 식량을 굶주린 이웃에게 전할 수 있습니다.',
+          },
+        ],
+      },
+      providers: {
+        label: '원조자',
+        title: '내놓는 쪽에도, 실어 나르는 쪽에도 이익이 됩니다',
+        body: '원조는 일방적인 희생이 아닙니다. GrainBridge 안에서 식량 제공자와 운송 산업, 그리고 국가는 각자의 문제를 함께 풀어 갑니다.',
+        cards: [
+          {
+            perspective: '민간 식량 제공자 관점',
+            title: '남은 식량의 폐기 문제가 사라집니다',
+            body: '팔리지 않은 재고와 잉여 곡물을 비용을 들여 버리는 대신, 굶주림이 있는 곳으로 보냅니다. 버려질 자원이 생명을 살리는 식량이 됩니다.',
+            imageAlt: '짐바브웨 무타레의 식량 창고에 곡물 자루와 USAID 식용유 상자가 높이 쌓여 있는 모습',
+          },
+          {
+            perspective: '운송 산업 관점',
+            title: '대량의 정기적인 추가 매출이 생깁니다',
+            body: '잉여와 부족이 꾸준히 매칭될수록 식량 운송 수요도 꾸준히 생깁니다. 해운·육운·물류 기업에 대규모의 정기 물량이라는 새로운 매출원이 열립니다.',
+            imageAlt: '수단 포트수단 항구에서 작업자들이 컨베이어로 내린 식량 원조 자루를 트럭에 싣는 모습',
+          },
+          {
+            perspective: '국가 관점',
+            title: '앞으로의 식량안보 악화를 예방합니다',
+            body: '잉여 식량이 제대로 쓰일 길이 생기면, 가격 하락을 막으려 농업 생산을 줄이는 일을 피할 수 있습니다. 오늘의 생산 기반을 지키는 것이 내일의 식량안보를 지키는 길입니다.',
+            imageAlt: '미국 인디애나주 밀밭에서 콤바인이 수확한 밀을 운반 트랙터로 옮겨 담는 모습',
+          },
+        ],
+      },
+      credits: {
+        title: '사진 출처',
+        note: '모든 사진은 Wikimedia Commons에서 미국 정부 저작물(퍼블릭 도메인)로 분류된 사진입니다. 각 원본 페이지에서 라이선스를 확인할 수 있습니다.',
+        source: '원본 보기',
+        items: [
+          { subject: 'USAID 물류창고, 미국 마이애미 (2011)', author: 'Lance Cheung / 미국 농무부(USDA)', license: '퍼블릭 도메인 (미국 정부 저작물) · Flickr 원본 CC BY 2.0' },
+          { subject: '식량 원조 트럭, 아이티 포르토프랭스 (2010)', author: 'R. Gustafson / 미국 국제개발처(USAID)', license: '퍼블릭 도메인 (미국 정부 저작물) · Flickr 원본 CC BY-SA 2.0' },
+          { subject: '식량 창고, 짐바브웨 무타레 (2016)', author: 'USAID Zimbabwe', license: '퍼블릭 도메인 (미국 정부 저작물)' },
+          { subject: '식량 원조 하역, 수단 포트수단 항구', author: '미국 국제개발처(USAID)', license: '퍼블릭 도메인 (미국 정부 저작물)' },
+          { subject: '밀 수확, 미국 인디애나주 (2021)', author: "Brandon O'Connor / 미국 농무부 자연자원보전청(USDA NRCS)", license: '퍼블릭 도메인 (미국 정부 저작물)' },
+        ],
+      },
+    },
     need: {
       title: '시급한 필요',
       body: '급성 식량 불안(IPC 3단계 이상)을 겪는 인구가 해마다 늘고 있습니다. 잉여와 결핍 사이의 격차를 잇는 데 여러분의 후원이 꼭 필요합니다. 필요한 곡물을 공급해 기아를 막는 일에 세계 시민과 함께해 주세요.',
@@ -107,6 +168,67 @@ export const dictionary = {
     hero: {
       title: 'Bridging Gaps, Nourishing Hope.',
       body: 'GrainBridge connects global food surplus with regions in need. Explore live data, support shipments, and witness the impact of your contribution.',
+    },
+    value: {
+      eyebrow: 'Why GrainBridge',
+      title: 'One funded shipment turns food that would be wasted into someone’s next meal',
+      body: 'Between surplus food in one place and hunger in another lies a single missing piece: transport. GrainBridge fills that gap with donations, creating a model where donors and aid providers all win.',
+      highlights: ['Fund only the freight, not the food', 'Choose the region you support', 'Delivered, not discarded'],
+      cta: 'Fund a shipment now',
+      bannerAlt: 'Shelves in a USAID logistics warehouse stacked to the ceiling with relief-supply boxes marked USAID',
+      donors: {
+        label: 'Donors',
+        title: 'Where it is needed most, as efficiently as possible',
+        body: 'If you have ever hesitated because you could not tell where or how your gift would be used, now you choose both the destination and the purpose.',
+        imageAlt: 'A truck bed in Port-au-Prince, Haiti, piled high with USAID food-aid sacks ready for distribution',
+        points: [
+          {
+            title: 'The region you care about, the need that cannot wait',
+            body: 'Instead of an anonymous collection box, you pick the region and the shipment you support. Your gift goes straight to food, the most urgent need there is.',
+          },
+          {
+            title: 'No food to buy, just the cost of moving it',
+            body: 'The food already exists in surplus regions. You only fund the freight to move it, so the same gift puts far more food in front of hungry families.',
+          },
+        ],
+      },
+      providers: {
+        label: 'Aid providers',
+        title: 'It pays off for those who give food and those who carry it',
+        body: 'Aid is not a one-way sacrifice. Within GrainBridge, food providers, the transport industry and nations each solve a problem of their own.',
+        cards: [
+          {
+            perspective: 'Private food providers',
+            title: 'Surplus food no longer goes to waste',
+            body: 'Instead of paying to dispose of unsold stock and surplus grain, you send it where people are hungry. A resource bound for the landfill becomes food that saves lives.',
+            imageAlt: 'A food warehouse in Mutare, Zimbabwe, with grain sacks and USAID vegetable-oil cartons stacked high',
+          },
+          {
+            perspective: 'Transport industry',
+            title: 'Large, recurring new revenue',
+            body: 'The more consistently surplus is matched with shortage, the more consistent the demand for food freight. Shipping, trucking and logistics firms gain a new source of high-volume, regular business.',
+            imageAlt: 'Workers at Port Sudan harbour loading food-aid sacks from a conveyor onto trucks',
+          },
+          {
+            perspective: 'Nations',
+            title: 'Preventing future food-security decline',
+            body: 'When surplus food has somewhere useful to go, countries no longer need to cut farm output to prop up prices. Protecting today’s production base protects tomorrow’s food security.',
+            imageAlt: 'A combine unloading freshly harvested wheat into a grain cart on a farm in Indiana, USA',
+          },
+        ],
+      },
+      credits: {
+        title: 'Photo credits',
+        note: 'All photos are classified on Wikimedia Commons as U.S. government works in the public domain. Licenses can be checked on each source page.',
+        source: 'Source',
+        items: [
+          { subject: 'USAID logistics warehouse, Miami, USA (2011)', author: 'Lance Cheung / U.S. Department of Agriculture (USDA)', license: 'Public domain (U.S. government work) · Flickr original CC BY 2.0' },
+          { subject: 'Food-aid truck, Port-au-Prince, Haiti (2010)', author: 'R. Gustafson / U.S. Agency for International Development (USAID)', license: 'Public domain (U.S. government work) · Flickr original CC BY-SA 2.0' },
+          { subject: 'Food warehouse, Mutare, Zimbabwe (2016)', author: 'USAID Zimbabwe', license: 'Public domain (U.S. government work)' },
+          { subject: 'Unloading food aid, Port Sudan harbour', author: 'U.S. Agency for International Development (USAID)', license: 'Public domain (U.S. government work)' },
+          { subject: 'Wheat harvest, Indiana, USA (2021)', author: "Brandon O'Connor / USDA Natural Resources Conservation Service (NRCS)", license: 'Public domain (U.S. government work)' },
+        ],
+      },
     },
     need: {
       title: 'The Urgent Need',
