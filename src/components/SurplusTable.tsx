@@ -17,7 +17,7 @@ export default function SurplusTable() {
   const d = t.dashboard;
   return (
     <div className="rounded-lg border">
-      <Table>
+      <Table className="tabular-nums">
         <TableHeader>
           <TableRow>
             <TableHead>{d.colContinent}</TableHead>
@@ -35,7 +35,7 @@ export default function SurplusTable() {
                 <div className="font-medium">{tr(item.region)}</div>
                 <div className="text-sm text-muted-foreground">{tr(item.event)}</div>
               </TableCell>
-              <TableCell className="text-right font-medium text-chart-1">
+              <TableCell className="text-right font-semibold text-surplus-strong">
                 +{item.amount.toLocaleString(locale)}
               </TableCell>
             </TableRow>
