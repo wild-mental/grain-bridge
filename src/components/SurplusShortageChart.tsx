@@ -4,6 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { surplusData } from "@/data/mock-data";
 import { shortageData } from "@/data/mock-data";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 const processData = () => {
   const continentData: { [key: string]: { surplus: number; shortage: number } } = {};
@@ -31,13 +32,15 @@ const processData = () => {
 }
 
 export default function SurplusShortageChart() {
-  const chartData = processData();
+  const { t, tr } = useLanguage();
+  const d = t.dashboard;
+  const chartData = processData().map((row) => ({ ...row, continent: tr(row.continent) }));
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Global Surplus vs. Shortage by Continent</CardTitle>
-        <CardDescription>Comparison of total available surplus and critical shortage in million tonnes.</CardDescription>
+        <CardTitle>{d.chartTitle}</CardTitle>
+        <CardDescription>{d.chartDesc}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="h-[450px] w-full">
@@ -72,8 +75,8 @@ export default function SurplusShortageChart() {
                 labelStyle={{ color: "hsl(var(--foreground))" }}
               />
               <Legend wrapperStyle={{ fontSize: '14px', paddingTop: '20px' }}/>
-              <Bar dataKey="surplus" name="Surplus" fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="shortage" name="Shortage" fill="hsl(var(--destructive))" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="surplus" name={d.seriesSurplus} fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="shortage" name={d.seriesShortage} fill="hsl(var(--destructive))" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

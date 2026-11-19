@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Tabs,
   TabsContent,
@@ -9,33 +11,36 @@ import SurplusTable from "./SurplusTable";
 import ShortageTable from "./ShortageTable";
 import { ArrowUpRight, ArrowDownRight, BarChartBig } from "lucide-react";
 import SurplusShortageChart from "./SurplusShortageChart";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function DashboardTabs() {
+  const { t } = useLanguage();
+  const d = t.dashboard;
   return (
     <section id="dashboard" className="mb-12 md:mb-20">
       <div className="text-center mb-8">
-        <h2 className="font-headline text-3xl md:text-4xl font-bold">Global Dashboard</h2>
+        <h2 className="font-headline text-3xl md:text-4xl font-bold">{d.title}</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Explore real-time data on global grain surpluses and shortages.
+          {d.body}
         </p>
       </div>
       <Tabs defaultValue="surplus" className="w-full">
         <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 h-auto sm:h-12">
           <TabsTrigger value="surplus" className="py-2.5">
-            <ArrowUpRight className="mr-2 h-4 w-4" /> Surplus Zones
+            <ArrowUpRight className="mr-2 h-4 w-4" /> {d.tabSurplus}
           </TabsTrigger>
           <TabsTrigger value="shortage" className="py-2.5">
-            <ArrowDownRight className="mr-2 h-4 w-4" /> Shortage Zones
+            <ArrowDownRight className="mr-2 h-4 w-4" /> {d.tabShortage}
           </TabsTrigger>
           <TabsTrigger value="visualization" className="py-2.5">
-            <BarChartBig className="mr-2 h-4 w-4" /> Global View
+            <BarChartBig className="mr-2 h-4 w-4" /> {d.tabGlobal}
           </TabsTrigger>
         </TabsList>
         <TabsContent value="surplus" className="mt-6">
            <Card>
             <CardHeader>
-              <CardTitle>Surplus Inventory</CardTitle>
-              <CardDescription>Regions with overproduction or potential waste.</CardDescription>
+              <CardTitle>{d.surplusTitle}</CardTitle>
+              <CardDescription>{d.surplusDesc}</CardDescription>
             </CardHeader>
             <CardContent>
               <SurplusTable />
@@ -45,8 +50,8 @@ export default function DashboardTabs() {
         <TabsContent value="shortage" className="mt-6">
            <Card>
             <CardHeader>
-              <CardTitle>Critical Shortages</CardTitle>
-              <CardDescription>Regions facing food shortages due to crises and events.</CardDescription>
+              <CardTitle>{d.shortageTitle}</CardTitle>
+              <CardDescription>{d.shortageDesc}</CardDescription>
             </CardHeader>
             <CardContent>
               <ShortageTable />

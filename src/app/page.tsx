@@ -1,3 +1,5 @@
+"use client";
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DashboardTabs from '@/components/DashboardTabs';
@@ -20,6 +22,7 @@ import {
 } from "@/components/ui/table";
 import MatchMaker from '@/components/MatchMaker';
 import { Wand2 } from 'lucide-react';
+import { useLanguage } from '@/i18n/LanguageProvider';
 
 const ipcData = [
   { year: 2019, population: 135, gap: 8.4 },
@@ -32,33 +35,34 @@ const ipcData = [
 
 
 export default function Home() {
+  const { t, locale } = useLanguage();
+  const n = t.need;
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-8 md:py-12">
         <section className="text-center mb-12 md:mb-20">
           <h1 className="font-headline text-4xl md:text-6xl font-bold mb-4 text-foreground tracking-tight">
-            Bridging Gaps, Nourishing Hope.
+            {t.hero.title}
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            GrainBridge connects global food surplus with regions in need.
-            Explore live data, support shipments, and witness the impact of your contribution.
+            {t.hero.body}
           </p>
         </section>
 
         <section className="mb-12 md:mb-20">
           <div className="text-center mb-8">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold">The Urgent Need</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold">{n.title}</h2>
             <p className="text-muted-foreground max-w-3xl mx-auto mt-4">
-              The number of people facing acute food insecurity (IPC Phase 3 or above) is rising each year. Your support is crucial to bridge the gap between surplus and scarcity. Join compassionate global citizens to supply the needed grain and prevent hunger.
+              {n.body}
             </p>
           </div>
 
           <Card>
             <CardHeader>
-              <CardTitle>The Widening Gap: IPC 3+ Population &amp; Grain Needs</CardTitle>
+              <CardTitle>{n.cardTitle}</CardTitle>
               <CardDescription>
-                This chart and table show the alarming increase in populations facing food crises and the corresponding grain equivalent needed to meet their minimum caloric needs.
+                {n.cardDesc}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -68,17 +72,17 @@ export default function Home() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Year</TableHead>
-                      <TableHead className="text-right">IPC 3+ Population (millions)</TableHead>
-                      <TableHead className="text-right">Required Grain (Million Tonnes)</TableHead>
+                      <TableHead>{n.colYear}</TableHead>
+                      <TableHead className="text-right">{n.colPopulation}</TableHead>
+                      <TableHead className="text-right">{n.colGrain}</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {ipcData.map((data) => (
                       <TableRow key={data.year}>
                         <TableCell className="font-medium">{data.year}</TableCell>
-                        <TableCell className="text-right">{data.population}</TableCell>
-                        <TableCell className="text-right font-semibold text-destructive">{data.gap}</TableCell>
+                        <TableCell className="text-right">{data.population.toLocaleString(locale)}</TableCell>
+                        <TableCell className="text-right font-semibold text-destructive">{data.gap.toLocaleString(locale)}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -87,19 +91,17 @@ export default function Home() {
 
               <Accordion type="single" collapsible className="w-full mt-6">
                 <AccordionItem value="item-1">
-                  <AccordionTrigger>What is the IPC and what does IPC 3+ mean?</AccordionTrigger>
+                  <AccordionTrigger>{n.faqQ}</AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-3 pt-2">
-                      <p>The <strong>Integrated Food Security Phase Classification (IPC)</strong> is a standardized scale that measures the severity of food insecurity. It helps governments and humanitarian actors understand the scale of the problem and decide on the best response.</p>
-                      <p>The scale has five phases:</p>
+                      <p>{n.faqP1Before}<strong>{n.faqP1Strong}</strong>{n.faqP1After}</p>
+                      <p>{n.faqP2}</p>
                       <ul className="list-disc pl-6 space-y-1 text-sm">
-                        <li><strong>IPC Phase 1:</strong> Minimal/None</li>
-                        <li><strong>IPC Phase 2:</strong> Stressed</li>
-                        <li><strong>IPC Phase 3: Crisis</strong> - Households are forced to sell essential assets or adopt crisis-coping strategies to afford food.</li>
-                        <li><strong>IPC Phase 4: Emergency</strong> - Households face extreme food gaps, leading to high levels of acute malnutrition and excess mortality.</li>
-                        <li><strong>IPC Phase 5: Catastrophe/Famine</strong> - Households have an extreme lack of food and/or other basic needs even after fully employing coping strategies.</li>
+                        {n.phases.map((phase) => (
+                          <li key={phase.label}><strong>{phase.label}</strong>{phase.text}</li>
+                        ))}
                       </ul>
-                      <p><strong>IPC 3+</strong> refers to populations in the "Crisis", "Emergency", or "Catastrophe/Famine" phases. These are people in urgent need of assistance to save lives, reduce food gaps, and protect livelihoods.</p>
+                      <p><strong>{n.faqP3Strong}</strong>{n.faqP3After}</p>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
@@ -114,15 +116,15 @@ export default function Home() {
           <div className="text-center mb-8">
             <h2 className="font-headline text-3xl md:text-4xl font-bold flex items-center justify-center gap-3">
               <Wand2 className="h-8 w-8 text-primary" />
-              Match &amp; Donate
+              {t.match.title}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
-              Fund a pre-calculated, high-impact shipment to bridge a critical gap. Your donation directly covers shipping and logistics.
+              {t.match.body}
             </p>
           </div>
           <MatchMaker />
         </section>
-        
+
         <ImpactBoard />
 
       </main>

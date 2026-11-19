@@ -8,18 +8,21 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 import { DonationDialog } from "./DonationDialog";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 const INITIAL_VISIBLE_COUNT = 15;
 
 export default function MatchMaker() {
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+  const { t, tr, locale } = useLanguage();
+  const d = t.match;
 
   const showMore = () => {
     setVisibleCount(topMatchesData.length);
   };
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat(locale, {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 0,
@@ -28,7 +31,7 @@ export default function MatchMaker() {
   };
 
   const formatNumber = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat(locale, {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
@@ -37,9 +40,9 @@ export default function MatchMaker() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Top Priority Shipments</CardTitle>
+        <CardTitle>{d.cardTitle}</CardTitle>
         <CardDescription>
-          These are the most impactful, pre-calculated matches. You can directly fund a shipment to make a difference.
+          {d.cardDesc}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -48,15 +51,15 @@ export default function MatchMaker() {
             <div key={match.id} className="p-4 border rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-background hover:bg-muted/50 transition-colors">
               <div className="flex-grow space-y-2">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <Badge variant="secondary">{match.surplusContinent}</Badge>
-                  <span className="font-semibold text-foreground">{match.surplusRegion}</span>
+                  <Badge variant="secondary">{tr(match.surplusContinent)}</Badge>
+                  <span className="font-semibold text-foreground">{tr(match.surplusRegion)}</span>
                   <ArrowRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                  <Badge variant="outline" className="border-destructive/50 text-destructive">{match.shortageContinent}</Badge>
-                  <span className="font-semibold text-foreground">{match.shortageRegion}</span>
+                  <Badge variant="outline" className="border-destructive/50 text-destructive">{tr(match.shortageContinent)}</Badge>
+                  <span className="font-semibold text-foreground">{tr(match.shortageRegion)}</span>
                 </div>
                  <div className="text-sm text-muted-foreground flex items-center gap-4 flex-wrap">
-                    <span>Commodity: <span className="font-medium text-foreground">{match.commodity}</span></span>
-                    <span>Volume: <span className="font-medium text-foreground">{match.tonnage.toLocaleString()} Mt</span></span>
+                    <span>{d.commodity}: <span className="font-medium text-foreground">{tr(match.commodity)}</span></span>
+                    <span>{d.volume}: <span className="font-medium text-foreground">{match.tonnage.toLocaleString(locale)} Mt</span></span>
                  </div>
               </div>
               <div className="flex items-center gap-4 w-full sm:w-auto self-stretch sm:self-center">
@@ -65,7 +68,7 @@ export default function MatchMaker() {
                  </div>
                  <DonationDialog>
                     <Button className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90">
-                      Donate
+                      {d.donate}
                     </Button>
                 </DonationDialog>
               </div>
@@ -75,7 +78,7 @@ export default function MatchMaker() {
         {visibleCount < topMatchesData.length && (
           <div className="text-center pt-4">
             <Button variant="outline" onClick={showMore}>
-              Show More Matches ({topMatchesData.length - visibleCount} remaining)
+              {d.showMore(topMatchesData.length - visibleCount)}
             </Button>
           </div>
         )}

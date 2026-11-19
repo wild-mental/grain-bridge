@@ -1,6 +1,7 @@
 "use client"
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Cell } from 'recharts';
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 interface IpcPopulationChartProps {
   data: {
@@ -11,6 +12,7 @@ interface IpcPopulationChartProps {
 }
 
 export default function IpcPopulationChart({ data }: IpcPopulationChartProps) {
+  const { t } = useLanguage();
   const populationValues = data.map(d => d.population);
   const minPopulation = Math.min(...populationValues);
   const maxPopulation = Math.max(...populationValues);
@@ -57,10 +59,10 @@ export default function IpcPopulationChart({ data }: IpcPopulationChartProps) {
               borderRadius: "var(--radius)",
             }}
             labelStyle={{ color: "hsl(var(--foreground))" }}
-            formatter={(value: number) => [`${value} million`, 'IPC 3+ Population']}
+            formatter={(value: number) => [`${value} ${t.ipcChart.tooltipUnit}`, t.ipcChart.tooltipName]}
           />
           <Legend wrapperStyle={{ fontSize: '14px', paddingTop: '20px' }}/>
-          <Bar dataKey="population" name="IPC 3+ Population (millions)" radius={[4, 4, 0, 0]}>
+          <Bar dataKey="population" name={t.ipcChart.series} radius={[4, 4, 0, 0]}>
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={getColor(entry.population)} />
             ))}

@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/i18n/LanguageProvider";
 import GrainBridgeLogo from "./Logo";
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="border-t border-border/40">
       <div className="container mx-auto py-8 px-4">
@@ -11,11 +15,11 @@ export default function Footer() {
             <p className="text-sm font-semibold">GrainBridge</p>
           </div>
           <div className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} GrainBridge. A Wild &amp; Contributors Project.
+            © {new Date().getFullYear()} {t.footer.rights}
           </div>
           <div className="flex items-center space-x-4">
-            <Link href="/privacy" className="text-sm hover:underline">Privacy Policy</Link>
-            <Link href="/terms" className="text-sm hover:underline">Terms of Service</Link>
+            <Link href="/privacy" className="text-sm hover:underline">{t.footer.privacy}</Link>
+            <Link href="/terms" className="text-sm hover:underline">{t.footer.terms}</Link>
           </div>
         </div>
       </div>

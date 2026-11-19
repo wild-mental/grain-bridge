@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -27,20 +27,26 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { CreditCard, Heart, PartyPopper } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageProvider";
+import type { Dictionary } from "@/i18n/dictionary";
 
-const donationSchema = z.object({
-  amount: z.coerce.number().positive({ message: "Please enter a positive amount." }).min(1, { message: "Donation must be at least $1." }),
-  cardName: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  cardNumber: z.string().regex(/^\d{16}$/, { message: "Please enter a valid 16-digit card number." }),
-  expiryDate: z.string().regex(/^(0[1-9]|1[0-2])\s*\/\s*(\d{2})$/, { message: "Please use MM/YY format." }),
-  cvc: z.string().regex(/^\d{3,4}$/, { message: "Please enter a valid CVC." }),
-});
+const makeDonationSchema = (d: Dictionary["donation"]) =>
+  z.object({
+    amount: z.coerce.number().positive({ message: d.errAmountPositive }).min(1, { message: d.errAmountMin }),
+    cardName: z.string().min(2, { message: d.errName }),
+    cardNumber: z.string().regex(/^\d{16}$/, { message: d.errCard }),
+    expiryDate: z.string().regex(/^(0[1-9]|1[0-2])\s*\/\s*(\d{2})$/, { message: d.errExpiry }),
+    cvc: z.string().regex(/^\d{3,4}$/, { message: d.errCvc }),
+  });
 
-type DonationFormValues = z.infer<typeof donationSchema>;
+type DonationFormValues = z.infer<ReturnType<typeof makeDonationSchema>>;
 
 export function DonationDialog({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { t } = useLanguage();
+  const d = t.donation;
+  const donationSchema = useMemo(() => makeDonationSchema(d), [d]);
 
   const form = useForm<DonationFormValues>({
     resolver: zodResolver(donationSchema),
@@ -79,10 +85,10 @@ export function DonationDialog({ children }: { children: React.ReactNode }) {
           <>
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
-                <Heart className="text-primary" /> Make a Donation
+                <Heart className="text-primary" /> {d.title}
               </DialogTitle>
               <DialogDescription>
-                Your contribution directly funds the logistics to get surplus food to those in need. Every dollar helps bridge the gap.
+                {d.desc}
               </DialogDescription>
             </DialogHeader>
             <Form {...form}>
@@ -92,7 +98,7 @@ export function DonationDialog({ children }: { children: React.ReactNode }) {
                   name="amount"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Amount (USD)</FormLabel>
+                      <FormLabel>{d.amount}</FormLabel>
                       <FormControl>
                         <div className="relative">
                           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
@@ -109,9 +115,9 @@ export function DonationDialog({ children }: { children: React.ReactNode }) {
                   name="cardName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Name on Card</FormLabel>
+                      <FormLabel>{d.cardName}</FormLabel>
                       <FormControl>
-                        <Input placeholder="John Doe" {...field} />
+                        <Input placeholder={d.cardNamePlaceholder} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -123,7 +129,7 @@ export function DonationDialog({ children }: { children: React.ReactNode }) {
                   name="cardNumber"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Card Number</FormLabel>
+                      <FormLabel>{d.cardNumber}</FormLabel>
                       <div className="relative">
                         <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         <FormControl>
@@ -141,7 +147,7 @@ export function DonationDialog({ children }: { children: React.ReactNode }) {
                     name="expiryDate"
                     render={({ field }) => (
                       <FormItem>
-                         <FormLabel>Expiry</FormLabel>
+                         <FormLabel>{d.expiry}</FormLabel>
                         <FormControl>
                           <Input placeholder="MM / YY" {...field} />
                         </FormControl>
@@ -154,7 +160,7 @@ export function DonationDialog({ children }: { children: React.ReactNode }) {
                     name="cvc"
                     render={({ field }) => (
                       <FormItem>
-                         <FormLabel>CVC</FormLabel>
+                         <FormLabel>{d.cvc}</FormLabel>
                         <FormControl>
                           <Input placeholder="123" {...field} />
                         </FormControl>
@@ -166,7 +172,7 @@ export function DonationDialog({ children }: { children: React.ReactNode }) {
                 
                 <DialogFooter className="pt-4">
                   <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                    {form.formState.isSubmitting ? "Processing..." : "Donate Now"}
+                    {form.formState.isSubmitting ? d.processing : d.submit}
                   </Button>
                 </DialogFooter>
               </form>
@@ -175,12 +181,12 @@ export function DonationDialog({ children }: { children: React.ReactNode }) {
         ) : (
           <div className="flex flex-col items-center justify-center text-center py-8 space-y-4">
               <PartyPopper className="h-16 w-16 text-accent" />
-              <DialogTitle className="text-2xl">Thank You!</DialogTitle>
+              <DialogTitle className="text-2xl">{d.thanksTitle}</DialogTitle>
               <DialogDescription className="max-w-xs">
-                Your incredible generosity is helping build a world without hunger. Thank you for being a part of GrainBridge.
+                {d.thanksBody}
               </DialogDescription>
               <DialogClose asChild>
-                <Button className="mt-4">Close</Button>
+                <Button className="mt-4">{d.close}</Button>
               </DialogClose>
           </div>
         )}
