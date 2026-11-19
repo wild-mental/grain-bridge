@@ -105,7 +105,7 @@ export default function MatchMaker() {
                       {formatCurrency(match.donatedAmount)} / {formatCurrency(match.shippingCost)}
                     </p>
                   </div>
-                  <DonationDialog>
+                  <DonationDialog shipment={match}>
                     <Button className="w-full bg-accent font-bold text-accent-foreground hover:bg-accent/90 sm:w-auto">
                       {d.donate}
                     </Button>
