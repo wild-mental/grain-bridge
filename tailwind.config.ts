@@ -17,8 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['PT Sans', 'sans-serif'],
-        headline: ['Playfair Display', 'serif'],
+        body: ['var(--font-sans)', 'Apple SD Gothic Neo', 'Malgun Gothic', 'sans-serif'],
+        headline: ['var(--font-serif)', 'AppleMyungjo', 'Batang', 'serif'],
         code: ['monospace'],
       },
       colors: {
@@ -52,6 +52,19 @@ export default {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
+        success: {
+          DEFAULT: 'hsl(var(--success))',
+          foreground: 'hsl(var(--success-foreground))',
+        },
+        surplus: {
+          DEFAULT: 'hsl(var(--surplus))',
+          strong: 'hsl(var(--surplus-strong))',
+        },
+        shortage: {
+          DEFAULT: 'hsl(var(--shortage))',
+          foreground: 'hsl(var(--shortage-foreground))',
+        },
+        overlay: 'hsl(var(--overlay))',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

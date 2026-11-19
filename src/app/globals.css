@@ -4,30 +4,41 @@
 
 @layer base {
   :root {
+    /* GrainBridge palette: deep navy (trust, logistics) + grain gold (harvest). */
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --foreground: 220 30% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 220 30% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 142 71% 45%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
+    --popover-foreground: 220 30% 12%;
+    --primary: 215 60% 28%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 30% 95%;
+    --secondary-foreground: 215 60% 20%;
+    --muted: 40 25% 95%;
+    --muted-foreground: 220 12% 38%;
+    /* Gold is for surfaces and highlights only; text on it uses the dark accent-foreground. */
+    --accent: 38 92% 50%;
+    --accent-foreground: 215 60% 14%;
+    --success: 150 60% 28%;
+    --success-foreground: 0 0% 100%;
+    /* Dashboard semantics: surplus = grain gold, shortage = rust (not "error" red). */
+    --surplus: 38 92% 50%;
+    --surplus-strong: 30 85% 30%;
+    --shortage: 8 70% 45%;
+    --shortage-foreground: 0 0% 100%;
+    /* Base for gradients behind text on photos. */
+    --overlay: 220 40% 8%;
+    --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 217 91% 60%;
-    --chart-1: 217 91% 60%;
-    --chart-2: 142 71% 45%;
-    --chart-3: 50 90% 55%;
-    --chart-4: 260 90% 65%;
-    --chart-5: 340 90% 65%;
+    --border: 35 15% 88%;
+    --input: 35 15% 85%;
+    --ring: 215 60% 28%;
+    --chart-1: 215 60% 28%;
+    --chart-2: 38 92% 50%;
+    --chart-3: 8 70% 45%;
+    --chart-4: 150 60% 28%;
+    --chart-5: 215 25% 60%;
     --radius: 0.5rem;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -40,30 +51,37 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 142 71% 45%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --background: 220 35% 7%;
+    --foreground: 40 20% 96%;
+    --card: 220 32% 10%;
+    --card-foreground: 40 20% 96%;
+    --popover: 220 32% 10%;
+    --popover-foreground: 40 20% 96%;
+    --primary: 212 70% 62%;
+    --primary-foreground: 220 40% 8%;
+    --secondary: 220 25% 16%;
+    --secondary-foreground: 40 20% 96%;
+    --muted: 220 25% 14%;
+    --muted-foreground: 220 12% 68%;
+    --accent: 38 92% 55%;
+    --accent-foreground: 220 40% 8%;
+    --success: 150 50% 50%;
+    --success-foreground: 220 40% 8%;
+    --surplus: 38 92% 55%;
+    --surplus-strong: 38 90% 62%;
+    --shortage: 8 75% 60%;
+    --shortage-foreground: 220 40% 8%;
+    --overlay: 220 40% 5%;
+    --destructive: 0 62.8% 45%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 217 91% 60%;
-    --chart-1: 217 91% 60%;
-    --chart-2: 142 71% 45%;
-    --chart-3: 50 90% 55%;
-    --chart-4: 260 90% 65%;
-    --chart-5: 340 90% 65%;
+    --border: 220 20% 20%;
+    --input: 220 20% 22%;
+    --ring: 212 70% 62%;
+    --chart-1: 212 70% 62%;
+    --chart-2: 38 92% 55%;
+    --chart-3: 8 75% 60%;
+    --chart-4: 150 50% 50%;
+    --chart-5: 215 25% 60%;
   }
 }
 
@@ -73,5 +91,24 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+  /* Korean: never break inside a word (eojeol). */
+  :lang(ko) h1, :lang(ko) h2, :lang(ko) h3, :lang(ko) h4, :lang(ko) .keep-all {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
