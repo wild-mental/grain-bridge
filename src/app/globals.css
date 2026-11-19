@@ -98,10 +98,10 @@
   h1, h2, h3, h4 {
     text-wrap: balance;
   }
-  /* Korean: never break inside a word (eojeol). */
-  :lang(ko) h1, :lang(ko) h2, :lang(ko) h3, :lang(ko) h4, :lang(ko) .keep-all {
+  /* Korean: never break inside a word (eojeol); headings and body text alike. */
+  body:lang(ko) {
     word-break: keep-all;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
   }
   html {
     scroll-behavior: smooth;

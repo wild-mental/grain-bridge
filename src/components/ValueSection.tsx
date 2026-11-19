@@ -3,9 +3,7 @@
 import Image, { type StaticImageData } from "next/image";
 import {
   ArrowRight,
-  Camera,
   Check,
-  ExternalLink,
   HandHeart,
   Handshake,
   Landmark,
@@ -17,27 +15,19 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageProvider";
+import Reveal from "./Reveal";
 
 import warehouseBanner from "../../public/images/usaid-warehouse-miami.webp";
 import foodAidTruck from "../../public/images/food-aid-truck-haiti.webp";
 import mutareWarehouse from "../../public/images/food-warehouse-mutare.webp";
-import portSudan from "../../public/images/port-sudan-food-aid-unloading.webp";
+import grainShipLoading from "../../public/images/grain-ship-loading-duluth.webp";
 import wheatHarvest from "../../public/images/wheat-harvest-indiana.webp";
-
-/** Source pages, in the same order as `t.value.credits.items`. */
-const creditLinks = [
-  "https://commons.wikimedia.org/wiki/File:A_warehouse_full_of_USAID_goods_-_20110826-FS-LSC-0046_-_Flickr_-_USDAgov.jpg",
-  "https://commons.wikimedia.org/wiki/File:Food_Aid_Loaded_for_Distribution_(4322712372).jpg",
-  "https://commons.wikimedia.org/wiki/File:Food_in_warehouse_in_Mutare_Zimbabwe_(36273607594).jpg",
-  "https://commons.wikimedia.org/wiki/File:Sudan_Port_Sudan_Harbor_USAID2.jpg",
-  "https://commons.wikimedia.org/wiki/File:Indiana_Wheat_Harvest_(20210628-NRCS-BJOC-005).jpg",
-];
 
 const donorIcons: LucideIcon[] = [MapPin, Truck];
 
 const providerVisuals: { image: StaticImageData; icon: LucideIcon }[] = [
   { image: mutareWarehouse, icon: Warehouse },
-  { image: portSudan, icon: Ship },
+  { image: grainShipLoading, icon: Ship },
   { image: wheatHarvest, icon: Landmark },
 ];
 
@@ -57,8 +47,10 @@ export default function ValueSection() {
   const v = t.value;
 
   return (
-    <section aria-labelledby="value-title" className="mb-12 md:mb-20">
+    <section aria-labelledby="value-title" className="bg-background py-16 md:py-24">
+      <div className="container px-4 sm:px-8">
       {/* Banner: photo with dark overlay so white text keeps contrast */}
+      <Reveal>
       <div className="relative isolate overflow-hidden rounded-2xl shadow-lg">
         <Image
           src={warehouseBanner}
@@ -68,9 +60,12 @@ export default function ValueSection() {
           sizes="(min-width: 1400px) 1400px, 100vw"
           className="-z-10 object-cover"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/90 via-black/75 to-black/45" aria-hidden="true" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-overlay/90 via-overlay/75 to-overlay/45" aria-hidden="true" />
         <div className="px-6 py-12 sm:px-10 md:px-14 md:py-20 max-w-3xl">
-          <p className="text-sm font-bold uppercase tracking-widest text-white/80">{v.eyebrow}</p>
+          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-accent sm:text-sm">
+            <span className="h-px w-6 bg-accent" aria-hidden="true" />
+            {v.eyebrow}
+          </p>
           <h2 id="value-title" className="mt-3 font-headline text-3xl md:text-5xl font-bold leading-tight text-white text-balance">
             {v.title}
           </h2>
@@ -86,7 +81,7 @@ export default function ValueSection() {
               </li>
             ))}
           </ul>
-          <Button asChild size="lg" className="mt-8">
+          <Button asChild size="lg" variant="outline" className="mt-8 border-white/60 bg-transparent text-white hover:bg-white hover:text-foreground">
             <a href="#match-and-donate">
               {v.cta}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -94,9 +89,11 @@ export default function ValueSection() {
           </Button>
         </div>
       </div>
+      </Reveal>
 
       {/* Donors */}
-      <div className="mt-12 md:mt-16 overflow-hidden rounded-2xl border bg-card shadow-sm">
+      <Reveal className="mt-12 md:mt-16">
+      <div className="overflow-hidden rounded-2xl border bg-card shadow-sm">
         <div className="grid md:grid-cols-5">
           <div className="relative min-h-[260px] md:col-span-2 md:min-h-full">
             <Image
@@ -131,9 +128,10 @@ export default function ValueSection() {
           </div>
         </div>
       </div>
+      </Reveal>
 
       {/* Aid providers */}
-      <div className="mt-12 md:mt-16">
+      <Reveal className="mt-12 md:mt-16">
         <div className="max-w-3xl">
           <GroupLabel icon={Handshake} tone="accent">{v.providers.label}</GroupLabel>
           <h3 className="mt-4 font-headline text-2xl md:text-3xl font-bold">{v.providers.title}</h3>
@@ -168,32 +166,8 @@ export default function ValueSection() {
             );
           })}
         </div>
+      </Reveal>
       </div>
-
-      {/* Photo credits */}
-      <details className="mt-8 rounded-lg border bg-muted/40 px-4 py-3 text-sm text-muted-foreground">
-        <summary className="flex cursor-pointer items-center gap-2 font-medium text-foreground">
-          <Camera className="h-4 w-4" aria-hidden="true" />
-          {v.credits.title}
-        </summary>
-        <p className="mt-3">{v.credits.note}</p>
-        <ul className="mt-3 space-y-2">
-          {v.credits.items.map((item, i) => (
-            <li key={creditLinks[i]}>
-              <span className="text-foreground">{item.subject}</span> — {item.author} · {item.license} ·{" "}
-              <a
-                href={creditLinks[i]}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 font-medium text-foreground underline underline-offset-2 hover:text-primary"
-              >
-                {v.credits.source}
-                <ExternalLink className="h-3 w-3" aria-hidden="true" />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </details>
     </section>
   );
 }
